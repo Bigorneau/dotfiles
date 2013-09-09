@@ -1,0 +1,4 @@
+set default_encoding = utf-8
+set shell_cmd         = sh -c
+
+set show_status       = 0
