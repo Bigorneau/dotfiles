@@ -64,6 +64,9 @@ set noerrorbells
 set novisualbell
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
+" autocmd
+autocmd FileType c,cpp,python,sh autocmd BufWritePre <buffer> :%s/\s\+$//e
+
 " scripts
 if has("autocmd")
     filetype plugin indent on
