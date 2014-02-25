@@ -1,3 +1,7 @@
+" dunno why I have to specify this
+scriptencoding utf-8
+set encoding=utf-8
+
 " basic
 set number
 syntax on
