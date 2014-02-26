@@ -1,6 +1,6 @@
-CURRENT_DIR = $(shell pwd)
+all: server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome
 
-.PHONY: server dev vim bash zsh screen tmux
+.PHONY: all server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome
 
 server: vim bash zsh screen tmux
 
@@ -8,40 +8,32 @@ dev: server git mercurial
 
 desktop: dev uzbl xorg awesome
 
-# BASH
-$(BASHRC) = bashrc
 bash:
-	ln -v -s $(CURRENT_DIR)/$(BASHRC) $(HOME)/.bashrc
+	make -C bash
 
-# ZSH
-$(ZSHRC) = zshrc
 zsh:
-	ln -v -s $(CURRENT_DIR)/$(ZSHRC) $(HOME)/.zshrc
+	make -C zsh
 
-# VIM
-$(VIMRC) = vimrc
-$(VIMDIR) = vim
-vim:
-	ln -v -s $(CURRENT_DIR)/$(VIMRC) $(HOME)/.vimrc
-	ln -v -s $(CURRENT_DIR)/$(VIMDIR) $(HOME)/.vim
-
-# SCREEN
-$(SCREENRC) = screenrc
 screen:
-	ln -v -s $(CURRENT_DIR)/$(SCREENRC) $(HOME)/.screenrc
+	make -C screen
 
-# TMUX
-$(TMUXCONF) = tmux.conf
 tmux:
-	ln -v -s $(CURRENT_DIR)/$(TMUXCONF) $(HOME)/.tmux.conf
+	make -C tmux
 
-# MERCURIAL
-$(HGRC) = hgrc
-mercurial:
-	ln -v -s $(CURRENT_DIR)/$(HGRC) $(HOME)/.hgrc
+vim:
+	make -C vim
 
-# GIT
-$(GITCONFIG) = gitconfig
 git:
-	ln -v -s $(CURRENT_DIR)/$(GITCONFIG) $(HOME)/.gitconfig
+	make -C git
 
+mercurial:
+	make -C mercurial
+
+uzbl:
+	make -C uzbl
+
+xorg:
+	make -C xorg
+
+awesome:
+	make -C awesome
