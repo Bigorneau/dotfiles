@@ -10,10 +10,10 @@ all: bash
 .PHONY: all clean bash
 
 bash:
-	ln -v -s $(CURRENT_DIR)/$(BASH_PROFILE) $(HOME)/.bash_profile
-	ln -v -s $(CURRENT_DIR)/$(BASHRC) $(HOME)/.bashrc
-	ln -v -s $(CURRENT_DIR)/$(BASH_LOGOUT) $(HOME)/.bash_logout
-	ln -v -s $(CURRENT_DIR)/$(INPUTRC) $(HOME)/.inputrc
+	ln -s $(CURRENT_DIR)/$(BASH_PROFILE) $(HOME)/.bash_profile
+	ln -s $(CURRENT_DIR)/$(BASHRC) $(HOME)/.bashrc
+	ln -s $(CURRENT_DIR)/$(BASH_LOGOUT) $(HOME)/.bash_logout
+	ln -s $(CURRENT_DIR)/$(INPUTRC) $(HOME)/.inputrc
 
 clean:
 	rm -i $(HOME)/.bash_profile
