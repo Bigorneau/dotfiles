@@ -7,10 +7,16 @@ INPUTRC = inputrc
 
 all: bash
 
-.PHONY: all bash
+.PHONY: all clean bash
 
 bash:
 	ln -v -s $(CURRENT_DIR)/$(BASH_PROFILE) $(HOME)/.bash_profile
 	ln -v -s $(CURRENT_DIR)/$(BASHRC) $(HOME)/.bashrc
 	ln -v -s $(CURRENT_DIR)/$(BASH_LOGOUT) $(HOME)/.bash_logout
 	ln -v -s $(CURRENT_DIR)/$(INPUTRC) $(HOME)/.inputrc
+
+clean:
+	rm -i $(HOME)/.bash_profile
+	rm -i $(HOME)/.bashrc
+	rm -i $(HOME)/.bash_logout
+	rm -i $(HOME)/.inputrc

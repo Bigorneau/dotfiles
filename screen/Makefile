@@ -4,7 +4,10 @@ SCREENRC = screenrc
 
 all: screen
 
-.PHONY: = all screen
+.PHONY: all clean screen
 
 screen:
 	ln -v -s $(CURRENT_DIR)/$(SCREENRC) $(HOME)/.screenrc
+
+clean:
+	rm -i $(HOME)/.screenrc
