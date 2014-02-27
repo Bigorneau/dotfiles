@@ -1,0 +1,29 @@
+[ui]
+username = "Patrice Blin <dev@patriceblin.com>"
+verbose = True
+merge =  vimdiff
+
+[merge-tools]
+vimdiff.executable = vim
+#vimdiff.args = -d $base $local $output $other +close +close
+vimdiff.args = -d $output $base $local $other -c "wincmd J"
+
+[diff]
+git=1
+
+[extensions]
+color =
+
+[color]
+status.modified = magenta bold
+status.added = green bold
+status.removed = red bold
+status.deleted = cyan bold
+status.unknown = blue bold
+status.ignored = black bold
+
+[encode]
+*.gz = pipe: gunzip
+
+[decode]
+*.gz = pipe: gzip

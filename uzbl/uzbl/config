@@ -15,6 +15,9 @@ set socket_dir = /tmp
 
 set shell_cmd       = sh -c
 
+set def = request DEF_COMMAND
+set exec = requests EXEC_COMMAND
+
 # === General config aliases =================================================
 
 # Config related events (use the request function):
@@ -235,6 +238,7 @@ set ebind     = @mode_bind global,-insert
 # With this command you can enter in any command at runtime when prefixed with
 # a colon.
 @cbind    :_        = %s
+#@cbind    :_ @exec %s
 
 # open a new window or a new tab (see the on_event NEW_WINDOW settings above)
 @cbind  w            = event REQ_NEW_WINDOW
@@ -255,7 +259,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  ^            = scroll horizontal begin
 @cbind  $            = scroll horizontal end
 @cbind  <Space>      = scroll vertical end
-@cbind  G<Go To:>_   = scroll vertical %r!
+#@cbind  G<Go To:>_   = scroll vertical %r!
 @cbind  _G<Go To:>_  = scroll horizontal %r!
 
 # Navigation binds
@@ -316,7 +320,11 @@ set ebind     = @mode_bind global,-insert
 @bind   <Ctrl>i  = @set_mode insert
 
 # Hard-bound bookmarks
-@cbind  gh  = uri http://www.uzbl.org
+@cbind <Mod1>p = uri http://portail.wyplay.int/
+@cbind <Mod1>h = uri http://homepublic.wyplay.int/pblin
+@cbind <Mod1>s = uri http://sources.wyplay.int
+@cbind <Mod1>g = uri http://git.wyplay.int/
+@cbind <Mod1>m = uri http://wiki.mm.wyplay.int/mediawiki/index.php/Main_Page
 
 # New window binds
 @cbind  gw  = event REQ_NEW_WINDOW
@@ -407,6 +415,8 @@ set formfiller = spawn @scripts_dir/formfiller.sh
 @cbind  g>              = event LAST_TAB
 @cbind  gt              = event NEXT_TAB
 @cbind  gT              = event PREV_TAB
+@cbind  <Page_Up><Ctrl> = event PREV_TAB
+@cbind  <Page_Down><Ctrl> = event NEXT_TAB
 @cbind  gi<index:>_     = event GOTO_TAB %s
 
 # Preset loading
@@ -421,7 +431,7 @@ set preset = event PRESET_TABS
 
 # Default context menu
 menu_add Google = set uri = http://google.com
-menu_add Go Home = set uri = http://uzbl.org
+menu_add Go Home = set uri = http://
 menu_separator separator_1
 menu_add Quit uzbl = exit
 

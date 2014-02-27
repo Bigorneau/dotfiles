@@ -1,0 +1,30 @@
+[user]
+	email = dev@patriceblin.com
+	name = Patrice Blin
+
+[core]
+  editor = vim
+  pager = vimpager
+
+[color]
+  diff = true
+  status = auto
+  branch = always
+  interactive = always
+  ui = always
+  pager = true
+
+[mergetool "vimdiff3"]
+	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+
+[merge]
+	tool = vimdiff3
+
+[sendemail]
+	aliasfiletype = mutt
+	multiedit = true
+	confirm = always
+	smtpencryption = tls
+	smtpserver = mail.gandhi.net
+	smtpuser = mail@patriceblin.com
+	smtpserverport = 587

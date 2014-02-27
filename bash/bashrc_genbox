@@ -1,0 +1,16 @@
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# check if we have to do a first configuration
+if [ ! -f $HOME/.genbox-config-done ]; then
+	/usr/sbin/genbox-config $HOME
+	if [ $? -eq 0 ]; then
+		touch $HOME/.genbox-config-done
+	fi	
+fi
+
+if [ -d $HOME/.genbox ]; then
+	for files in $HOME/.genbox/*; do
+		. $files
+	done
+fi
+
+PS1='\[\e[01;33m\][\h] \[\e[01;31m\]genbox\[\e[01;34m\] \W \$\[\e[00m\] '
