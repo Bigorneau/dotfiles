@@ -1,5 +1,5 @@
 [user]
-	email = dev@patriceblin.com
+	email = pblin@wyplay.com
 	name = Patrice Blin
 
 [core]
@@ -25,6 +25,6 @@
 	multiedit = true
 	confirm = always
 	smtpencryption = tls
-	smtpserver = mail.gandhi.net
-	smtpuser = mail@patriceblin.com
+	smtpserver = smtp.gmail.com
+	smtpuser = pblin@wyplay.com
 	smtpserverport = 587
