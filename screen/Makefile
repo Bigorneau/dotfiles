@@ -10,4 +10,4 @@ screen:
 	ln -s $(CURRENT_DIR)/$(SCREENRC) $(HOME)/.screenrc
 
 clean:
-	rm -i $(HOME)/.screenrc
+	-rm -i $(HOME)/.screenrc

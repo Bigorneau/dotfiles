@@ -10,4 +10,4 @@ task:
 	ln -s $(CURRENT_DIR)/$(TASKRC) $(HOME)/.taskrc
 
 clean:
-	rm -i $(HOME)/.taskrc
+	-rm -i $(HOME)/.taskrc

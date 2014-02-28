@@ -10,4 +10,4 @@ mercurial:
 	ln -s $(CURRENT_DIR)/$(HGRC) $(HOME)/.hgrc
 
 clean:
-	rm -i $(HOME)/.hgrc
+	-rm -i $(HOME)/.hgrc

@@ -16,7 +16,7 @@ bash:
 	ln -s $(CURRENT_DIR)/$(INPUTRC) $(HOME)/.inputrc
 
 clean:
-	rm -i $(HOME)/.bash_profile
-	rm -i $(HOME)/.bashrc
-	rm -i $(HOME)/.bash_logout
-	rm -i $(HOME)/.inputrc
+	-rm -i $(HOME)/.bash_profile
+	-rm -i $(HOME)/.bashrc
+	-rm -i $(HOME)/.bash_logout
+	-rm -i $(HOME)/.inputrc

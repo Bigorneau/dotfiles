@@ -10,4 +10,4 @@ mplayer:
 	ln -s $(CURRENT_DIR)/$(MPLAYER_DIR) $(HOME)/.mplayer
 
 clean:
-	rm -i $(HOME)/.mplayer
+	-rm -i $(HOME)/.mplayer
