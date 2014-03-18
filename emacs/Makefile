@@ -12,5 +12,5 @@ emacs:
 	ln -s $(CURRENT_DIR)/$(EMACS_DIR) $(HOME)/.emacs.d
 
 clean:
-	rm -i $(HOME)/.emacs
-	rm -i $(HOME)/.emacs.d
+	-rm -i $(HOME)/.emacs
+	-rm -i $(HOME)/.emacs.d

@@ -16,7 +16,7 @@ xorg:
 	ln -s $(CURRENT_DIR)/$(XINITRC) $(HOME)/.xinitrc
 
 clean:
-	rm -i $(HOME)/.Xresources
-	rm -i $(HOME)/.Xdefaults
-	rm -i $(HOME)/.Xmodmap
-	rm -i $(HOME)/.xinitrc
+	-rm -i $(HOME)/.Xresources
+	-rm -i $(HOME)/.Xdefaults
+	-rm -i $(HOME)/.Xmodmap
+	-rm -i $(HOME)/.xinitrc

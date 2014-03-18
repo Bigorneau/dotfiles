@@ -12,5 +12,5 @@ vim:
 	ln -s $(CURRENT_DIR)/$(VIMDIR) $(HOME)/.vim
 
 clean:
-	rm -i $(HOME)/.vimrc
-	rm -i $(HOME)/.vim
+	-rm -i $(HOME)/.vimrc
+	-rm -i $(HOME)/.vim

@@ -14,4 +14,4 @@ work:
 	ln -s $(CURRENT_DIR)/$(GITCONFIG_WORK) $(HOME)/.gitconfig
 
 clean:
-	rm -i $(HOME)/.gitconfig
+	-rm -i $(HOME)/.gitconfig

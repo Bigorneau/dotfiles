@@ -10,4 +10,4 @@ uzbl:
 	ln -s $(CURRENT_DIR)/$(UZBL_DIR) $(HOME)/.config/uzbl
 
 clean:
-	rm -i $(HOME)/.config/uzbl
+	-rm -i $(HOME)/.config/uzbl

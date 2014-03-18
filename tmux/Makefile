@@ -10,4 +10,4 @@ tmux:
 	ln -s $(CURRENT_DIR)/$(TMUXCONF) $(HOME)/.tmux.conf
 
 clean:
-	rm -i $(HOME)/.tmux.conf
+	-rm -i $(HOME)/.tmux.conf

@@ -18,8 +18,8 @@ zsh:
 	ln -s $(CURRENT_DIR)/$(ZLOGOUT) $(HOME)/.zlogout
 
 clean:
-	rm -i $(HOME)/.zshenv
-	rm -i $(HOME)/.zprofile
-	rm -i $(HOME)/.zshrc
-	rm -i $(HOME)/.zlogin
-	rm -i $(HOME)/.zlogout
+	-rm -i $(HOME)/.zshenv
+	-rm -i $(HOME)/.zprofile
+	-rm -i $(HOME)/.zshrc
+	-rm -i $(HOME)/.zlogin
+	-rm -i $(HOME)/.zlogout
