@@ -1,6 +1,5 @@
-[user]
-	email = dev@patriceblin.com
-	name = Patrice Blin
+[include]
+	path = .gitconfig.local
 
 [core]
   editor = vim

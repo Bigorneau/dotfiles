@@ -1,5 +1,6 @@
+%include .hgrc.local
+
 [ui]
-username = "Patrice Blin <dev@patriceblin.com>"
 verbose = True
 merge =  vimdiff
 
