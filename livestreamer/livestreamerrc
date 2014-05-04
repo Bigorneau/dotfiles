@@ -1,0 +1,3 @@
+player=mplayer -cache 4096 -vf scale=720:480
+player-no-close
+verbose-player
