@@ -12,15 +12,15 @@ all: bash
 .PHONY: all clean bash genbox common
 
 common:
-	ln -s $(CURRENT_DIR)/$(BASH_PROFILE) $(HOME)/.bash_profile
-	ln -s $(CURRENT_DIR)/$(BASH_LOGOUT) $(HOME)/.bash_logout
-	ln -s $(CURRENT_DIR)/$(INPUTRC) $(HOME)/.inputrc
+	-ln -s $(CURRENT_DIR)/$(BASH_PROFILE) $(HOME)/.bash_profile
+	-ln -s $(CURRENT_DIR)/$(BASH_LOGOUT) $(HOME)/.bash_logout
+	-ln -s $(CURRENT_DIR)/$(INPUTRC) $(HOME)/.inputrc
 
 bash: common
-	ln -s $(CURRENT_DIR)/$(BASHRC) $(HOME)/.bashrc
+	-ln -s $(CURRENT_DIR)/$(BASHRC) $(HOME)/.bashrc
 
 genbox: common
-	ln -s $(CURRENT_DIR)/$(BASHRC_CROSS) $(HOME)/.bashrc
+	-ln -s $(CURRENT_DIR)/$(BASHRC_CROSS) $(HOME)/.bashrc
 
 clean:
 	-rm -i $(HOME)/.bash_profile

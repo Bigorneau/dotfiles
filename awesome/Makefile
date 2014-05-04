@@ -13,8 +13,8 @@ awesome:
 	-ln -s $(CURRENT_DIR)/$(AWESOME_DIR) $(HOME)/.config/awesome
 
 extras:
-	git clone $(VICIOUS_REPO) $(AWESOME_DIR)/vicious
-	git clone $(OBVIOUS_REPO) $(AWESOME_DIR)/obvious
+	-git clone $(VICIOUS_REPO) $(AWESOME_DIR)/vicious
+	-git clone $(OBVIOUS_REPO) $(AWESOME_DIR)/obvious
 
 clean:
 	-rm -i $(HOME)/.config/awesome

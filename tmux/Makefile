@@ -7,7 +7,7 @@ all: tmux
 .PHONY: all clean tmux
 
 tmux:
-	ln -s $(CURRENT_DIR)/$(TMUXCONF) $(HOME)/.tmux.conf
+	-ln -s $(CURRENT_DIR)/$(TMUXCONF) $(HOME)/.tmux.conf
 
 clean:
 	-rm -i $(HOME)/.tmux.conf

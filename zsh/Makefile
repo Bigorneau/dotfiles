@@ -11,11 +11,11 @@ all: zsh
 .PHONY: all clean zsh
 
 zsh:
-	ln -s $(CURRENT_DIR)/$(ZSHENV) $(HOME)/.zshenv
-	ln -s $(CURRENT_DIR)/$(ZPROFILE) $(HOME)/.zprofile
-	ln -s $(CURRENT_DIR)/$(ZSHRC) $(HOME)/.zshrc
-	ln -s $(CURRENT_DIR)/$(ZLOGIN) $(HOME)/.zlogin
-	ln -s $(CURRENT_DIR)/$(ZLOGOUT) $(HOME)/.zlogout
+	-ln -s $(CURRENT_DIR)/$(ZSHENV) $(HOME)/.zshenv
+	-ln -s $(CURRENT_DIR)/$(ZPROFILE) $(HOME)/.zprofile
+	-ln -s $(CURRENT_DIR)/$(ZSHRC) $(HOME)/.zshrc
+	-ln -s $(CURRENT_DIR)/$(ZLOGIN) $(HOME)/.zlogin
+	-ln -s $(CURRENT_DIR)/$(ZLOGOUT) $(HOME)/.zlogout
 
 clean:
 	-rm -i $(HOME)/.zshenv
