@@ -1,6 +1,6 @@
-local https = require("ssl.https")
+local https = require("ssl.https") -- lua-sec
 local ltn12 = require("ltn12")
-local json = require("json")
+local json = require("json") -- lua-luajson
 
 function table_print(t, indent)
   if not indent then
@@ -9,6 +9,7 @@ function table_print(t, indent)
   for key, value in pairs(t) do
     format = string.rep(" ", indent) .. key .. ":"
     if type(value) == "table" then
+      print(format)
       table_print(value, indent + 1)
     else
       print(format .. tostring(value))
@@ -39,9 +40,13 @@ function twitchRequest(ressource)
   return s
 end
 
+function isempty(s)
+  return s == nil or s == ""
+end
+
 function getUser(user)
   local s = twitchRequest("users/" .. user)
-  if s == nil or s == "" then
+  if isempty(s) then
     return
   end
   res = json.decode(s)
@@ -50,12 +55,12 @@ end
 
 function getStream(stream)
   local s = twitchRequest("streams/" .. stream)
-  if s == nil or s == "" then
+  if isempty(s) then
     return
   end
   res = json.decode(s)
   table_print(res)
 end
 
---getUser("mistermv")
+getUser("mistermv")
 getStream("tsm_theoddone")
