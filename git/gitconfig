@@ -18,12 +18,3 @@
 
 [merge]
 	tool = vimdiff3
-
-[sendemail]
-	aliasfiletype = mutt
-	multiedit = true
-	confirm = always
-	smtpencryption = tls
-	smtpserver = mail.gandhi.net
-	smtpuser = mail@patriceblin.com
-	smtpserverport = 587
