@@ -19,3 +19,9 @@ shell -$SHELL
 #utf-8 on
 
 monitor on
+
+# unbind
+bind s
+bind ^s
+bind q
+bind ^q
