@@ -1,20 +1,20 @@
 [include]
-	path = .gitconfig.local
+path = .gitconfig.local
 
 [core]
-  editor = vim
-  pager = vimpager
+editor = vim
+#pager = vimpager
 
 [color]
-  diff = true
-  status = auto
-  branch = always
-  interactive = always
-  ui = always
-  pager = true
+diff = true
+status = auto
+branch = always
+interactive = always
+ui = always
+pager = true
 
 [mergetool "vimdiff3"]
-	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 
 [merge]
-	tool = vimdiff3
+tool = vimdiff3
