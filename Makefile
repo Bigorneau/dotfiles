@@ -1,12 +1,12 @@
-all: server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome
+all: server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome mutt
 
-.PHONY: all clean server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome
+.PHONY: all clean server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome mutt
 
 server: vim emacs bash zsh screen tmux
 
 dev: server git mercurial
 
-desktop: dev uzbl xorg awesome task mplayer irssi
+desktop: dev uzbl xorg awesome task mplayer irssi mutt
 
 bash:
 	make -C bash
@@ -50,6 +50,9 @@ mplayer:
 irssi:
 	make -C irssi
 
+mutt:
+	make -C mutt
+
 # clean
 clean:
 	make clean -C vim
@@ -66,3 +69,4 @@ clean:
 	make clean -C task
 	make clean -C mplayer
 	make clean -C irssi
+	make clean -C mutt
