@@ -1,0 +1,5 @@
+set my_name = ""
+set realname = ""
+
+set imap_user = username@gmail.com
+set folder = imaps://imap.gmail.com/
