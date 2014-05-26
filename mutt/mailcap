@@ -2,4 +2,4 @@ text/html; w3m -I %{charset} -T text/html -dump; copiousoutput;
 #text/html; links %s; nametemplate=%s.html
 #text/html; links -dump %s; nametemplate=%s.html; copiousoutput
 video/*; mplayer %s > /dev/null
-image/*; feh %s > /devnull
+image/*; feh %s > /dev/null

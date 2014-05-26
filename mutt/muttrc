@@ -39,6 +39,8 @@ bind index "^" imap-fetch-mail
 
 # autoview
 auto_view text/html
+auto_view video/*
+auto_view image/*
 
 # aliases
 set alias_file=~/.mutt/aliases
