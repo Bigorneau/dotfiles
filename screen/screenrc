@@ -17,6 +17,7 @@ bind _ eval "scrollback 0" "scrollback 15000"
 shell -$SHELL
 
 #utf-8 on
+defutf8 on
 
 monitor on
 
