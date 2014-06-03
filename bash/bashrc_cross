@@ -107,119 +107,119 @@ PS1='\[\e[01;33m\][\h] \[\e[01;31m\]genbox\[\e[01;34m\] \W\[\033[0m\]$(ps1_end) 
 
 export TARGETS=("" "")
 curr_target() {
-    readlink /usr/targets/current
+	readlink /usr/targets/current
 }
 echo $PROMPT_COMMAND | grep TARGETS >/dev/null \
-    || PROMPT_COMMAND="TARGETS=(\$(curr_target) \${TARGETS[0]}); ${PROMPT_COMMAND}"
+	|| PROMPT_COMMAND="TARGETS=(\$(curr_target) \${TARGETS[0]}); ${PROMPT_COMMAND}"
 
 ps1_end() {
-    [ -n "${TARGETS[1]}" ] && [ "${TARGETS[0]}" != "${TARGETS[1]}" ] && changed=1
-    local red="\e[1;31m"
-    local no="\e[0m"
-    [ "${changed}" = 1 ] && echo -en $red
-    echo -n " ${TARGETS[0]}"
-    [ "${changed}" = 1 ] && echo -en $no
+	[ -n "${TARGETS[1]}" ] && [ "${TARGETS[0]}" != "${TARGETS[1]}" ] && changed=1
+	local red="\e[1;31m"
+	local no="\e[0m"
+	[ "${changed}" = 1 ] && echo -en $red
+	echo -n " ${TARGETS[0]}"
+	[ "${changed}" = 1 ] && echo -en $no
 }
 
 #------------------------------------------------------------
 
 x_find() {
-    #echo x_find
-    #set -x
-    pattern="$1"
-    name=$(xexec equery -q l "$pattern" | head -n 1)
+	#echo x_find
+	#set -x
+	pattern="$1"
+	name=$(xexec equery -q l "$pattern" | head -n 1)
 
-    if [ "$name" != "" ] && ! [[ "$name" =~ '^ \* ' ]]; then
+	if [ "$name" != "" ] && ! [[ "$name" =~ '^ \* ' ]]; then
 	name="=$name"
-    else
+	else
 	name="$pattern"
-    fi
+	fi
 
-    filepath=$(xexec equery -q w "$name" 2>/dev/null | head -n 1)
-    [ "$filepath" = "" ] && return 1
+	filepath=$(xexec equery -q w "$name" 2>/dev/null | head -n 1)
+	[ "$filepath" = "" ] && return 1
 
-    [ -f "$filepath" ] || return 1
-    path=$(dirname $filepath)
-    [ -d "$path" ] || return 1
-    filename=$(basename $filepath)
-    #set +x
-    return 0
+	[ -f "$filepath" ] || return 1
+	path=$(dirname $filepath)
+	[ -d "$path" ] || return 1
+	filename=$(basename $filepath)
+	#set +x
+	return 0
 }
 
 xcd() {
-    if [ "$1" = "" ]; then
-        cd $(xexec portageq envvar ROOT)/..
-        return 0
-    fi
+	if [ "$1" = "" ]; then
+		cd $(xexec portageq envvar ROOT)/..
+		return 0
+	fi
 
-    x_find $1 || return 1
-    cd $path || return 1
-    echo $path
-    echo $filename
+	x_find $1 || return 1
+	cd $path || return 1
+	echo $path
+	echo $filename
 }
 
 xvim() {
-    x_find $1 || return 1
-    cd $path || return 1
-    echo $path
-    echo $filename
-    vim $filename
+	x_find $1 || return 1
+	cd $path || return 1
+	echo $path
+	echo $filename
+	vim $filename
 }
 
 xtra() {
-    x_find $1 || return 1
-    cd $path || return 1
-    echo $path
-    echo $filename
+	x_find $1 || return 1
+	cd $path || return 1
+	echo $path
+	echo $filename
 
-    local prefix_base=$(pwd)/prefix
-    local prefix_n=
-    local prefix="${prefix_base}${prefix_n}"
-    local exists=0
-    while [ -e "$prefix" ]; do
-        [ "$2" = "" ] && exists=1 && echo "'$prefix' exists" && echo break && break
-        [ "$prefix_n" = "" ] && prefix_n=0
-        prefix_n=$[ $prefix_n + 1 ]
-        prefix="${prefix_base}${prefix_n}"
-    done
+	local prefix_base=$(pwd)/prefix
+	local prefix_n=
+	local prefix="${prefix_base}${prefix_n}"
+	local exists=0
+	while [ -e "$prefix" ]; do
+		[ "$2" = "" ] && exists=1 && echo "'$prefix' exists" && echo break && break
+		[ "$prefix_n" = "" ] && prefix_n=0
+		prefix_n=$[ $prefix_n + 1 ]
+		prefix="${prefix_base}${prefix_n}"
+	done
 
-    echo "prefix=${prefix}"
-    echo "exists=${exists}"
-    if [ "$exists" = 0 ]; then
-        echo 'BUILD_PREFIX=$(pwd)/prefix' xbuild "$filename" clean setup fetch unpack
-        BUILD_PREFIX="${prefix}" xbuild "$filename" clean setup fetch unpack || return 2
-    fi
-    cd ${prefix}/*/*/work/*/ || return 3
-    [ "$TMUX" != "" ] && tmux rename-window "${filename%\.ebuild}"
-    [ -e cscope.out ] || (echo cscope && cscope -Rb)
+	echo "prefix=${prefix}"
+	echo "exists=${exists}"
+	if [ "$exists" = 0 ]; then
+		echo 'BUILD_PREFIX=$(pwd)/prefix' xbuild "$filename" clean setup fetch unpack
+		BUILD_PREFIX="${prefix}" xbuild "$filename" clean setup fetch unpack || return 2
+	fi
+	cd ${prefix}/*/*/work/*/ || return 3
+	[ "$TMUX" != "" ] && tmux rename-window "${filename%\.ebuild}"
+	[ -e cscope.out ] || (echo cscope && cscope -Rb)
 }
 
 xl() {
-    (cd /usr/targets/current/root/var/db/pkg/ && ls --color=never -d */*$1*)
+	(cd /usr/targets/current/root/var/db/pkg/ && ls --color=never -d */*$1*)
 }
 
 xf() {
-    grep -v "^dir " /usr/targets/current/root/var/db/pkg/*/$1-*/CONTENTS | awk '{print $2}'
+	grep -v "^dir " /usr/targets/current/root/var/db/pkg/*/$1-*/CONTENTS | awk '{print $2}'
 }
 
 _packages() {
-    local cur prev opts base
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
+	local cur prev opts base
+	COMPREPLY=()
+	cur="${COMP_WORDS[COMP_CWORD]}"
+	prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-    local names=$( (
-	shopt -s nullglob
-	shopt -s extglob
-	for i in /usr/targets/current/root/var/db/pkg/*/; do cd "$i" && echo $curr*/; done | sed 's|/||g'
-	for i in /usr/targets/current/portage/*/; do cd "$i" && echo $curr*/*/; done | sed 's@\(/ \|/$\)@ @g'
-	for i in /usr/targets/current/portage/*/*/; do cd "$i" && echo $curr*/; done | sed 's|/||g'
-    ) )
-    #names=( "${names[@]} ${names2[@]} $(xl)" )
-    #names=( "${names[@]}" )
-    COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
+	local names=$( (
+		shopt -s nullglob
+		shopt -s extglob
+		for i in /usr/targets/current/root/var/db/pkg/*/; do cd "$i" && echo $curr*/; done | sed 's|/||g'
+		for i in /usr/targets/current/portage/*/; do cd "$i" && echo $curr*/*/; done | sed 's@\(/ \|/$\)@ @g'
+		for i in /usr/targets/current/portage/*/*/; do cd "$i" && echo $curr*/; done | sed 's|/||g'
+	) )
+	#names=( "${names[@]} ${names2[@]} $(xl)" )
+	#names=( "${names[@]}" )
+	COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
 
-    return 0;
+	return 0;
 }
 
 complete -F _packages xcd
@@ -229,24 +229,24 @@ complete -F _packages xf
 complete -F _packages xl
 
 _xmerge() {
-    COMPREPLY=()
-    local cur="${COMP_WORDS[COMP_CWORD]}"
-    #local prev="${COMP_WORDS[COMP_CWORD-1]}"
+	COMPREPLY=()
+	local cur="${COMP_WORDS[COMP_CWORD]}"
+	#local prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-    #slow
-    #portdir=$(xportageq envvar PORTDIR PORTDIR_OVERLAY)
-    portdir=/usr/targets/current/portage/*/
+	#slow
+	#portdir=$(xportageq envvar PORTDIR PORTDIR_OVERLAY)
+	portdir=/usr/targets/current/portage/*/
 
-    local names="$(\
-        for pd in $portdir ; do \
-            builtin cd ${pd}; \
-            for i in *-*/${cur}*; do \
-                [[ -d $i ]] && echo ${i##*/}; \
-            done ; \
-        done)"
-    COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
+	local names="$(\
+		for pd in $portdir ; do \
+			builtin cd ${pd}; \
+			for i in *-*/${cur}*; do \
+				[[ -d $i ]] && echo ${i##*/}; \
+			done ; \
+		done)"
+	COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
 
-    return 0;
+	return 0;
 }
 
 #complete -F _xmerge xmerge
