@@ -71,6 +71,8 @@ set autoread
 set nobackup
 
 " misc
+set nobackup
+set nowritebackup
 set noswapfile
 set nowb
 set noerrorbells
