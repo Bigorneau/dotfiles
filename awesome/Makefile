@@ -10,6 +10,7 @@ all: awesome extras
 .PHONY: all clean awesome extras
 
 awesome:
+	-mkdir $(HOME)/.config
 	-ln -s $(CURRENT_DIR)/$(AWESOME_DIR) $(HOME)/.config/awesome
 
 extras:
