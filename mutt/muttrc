@@ -27,6 +27,8 @@ unset imap_passive
 set imap_keepalive = 300
 set mail_check = 120
 
+#set index_format="%4C %Z %{%b %d} %-15.15L (%4l) %s"
+set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"
 set signature="iconv -f utf-8 ~/mail/.signature |"
 set ispell="ispell --mode=email"
 set forward_format="Fwd: %s"
@@ -36,6 +38,11 @@ set sleep_time = 0
 
 # keybinds
 bind index "^" imap-fetch-mail
+
+# view
+#set sort = 'reverse-threads'
+set sort = 'threads'
+set sort_aux = 'reverse-last-date-received'
 
 # autoview
 auto_view text/html
@@ -156,3 +163,5 @@ color markers brightcyan black
 mono bold bold
 mono underline underline
 mono indicator reverse
+
+source ~/.gpg.rc
