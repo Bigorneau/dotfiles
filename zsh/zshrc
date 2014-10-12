@@ -307,7 +307,7 @@ hex() {
 #alias -s pl='perl -S'
 
 ## ctrl-s will no longer freeze the terminal.
-#stty erase "^?"
+stty erase "^?"
 
 ## you want to automatically use a bigger font on big terminals?
 #if [[ "$TERM" == "xterm" ]] && [[ "$LINES" -ge 50 ]] && [[ "$COLUMNS" -ge 100 ]] && [[ -z "$SSH_CONNECTION" ]] ; then
