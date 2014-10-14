@@ -2,3 +2,5 @@
 
 exec awesome
 xrdb -merge ~/.Xresources
+xmodmap ~/.Xmodmap
+#eval $(gpg-agent --daemon --enable-ssh-support)
