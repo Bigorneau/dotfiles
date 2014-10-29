@@ -3,3 +3,6 @@ set realname = ""
 
 set imap_user = username@gmail.com
 set folder = imaps://imap.gmail.com/
+
+source "gpg -d ~/.mutt/username.gpg |"
+source "gpg -d ~/.mutt/passwords.gpg |"

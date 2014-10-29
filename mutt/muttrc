@@ -1,5 +1,5 @@
 # identity
-source ~/.mutt/identity
+source "gpg -d ~/.mutt/identify.gpg |"
 
 set hidden_host
 

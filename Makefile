@@ -4,7 +4,7 @@ all: server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome
 
 server: vim emacs bash zsh screen tmux
 
-dev: server git mercurial
+dev: server git mercurial mutt
 
 desktop: dev uzbl xorg awesome task mplayer irssi mutt
 
