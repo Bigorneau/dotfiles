@@ -1,4 +1,4 @@
-XORG_CONF_SYS = /etc/X11/xorg.conf.d
+XORG_CONF_SYS = /etc/X11
 XORG_CONF_DIR = xorg.conf.d
 
 XKB_SYMBOLS_SYS = /usr/share/X11/xkb/symbols
