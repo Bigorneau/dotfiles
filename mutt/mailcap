@@ -1,4 +1,5 @@
 text/html; w3m -I %{charset} -T text/html -dump; copiousoutput; 
+#text/html; elinks -dump -dump-charset ${charset} -dump-color-mode 1 http://google.com/
 #text/html; links %s; nametemplate=%s.html
 #text/html; links -dump %s; nametemplate=%s.html; copiousoutput
 video/*; mplayer %s > /dev/null
