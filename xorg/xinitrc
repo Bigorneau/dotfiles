@@ -1,6 +1,19 @@
-#!/bin/sh
+##!/bin/sh
+#
+#gnupginf="${HOME}/.gpg-agent-info"
+#
+#if pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
+#	eval $(cat $gnupginf)
+#	eval $(cut -d= -f1 $gnupginf | xargs echo export)
+#else
+#	eval $(gpg-agent --quiet --daemon --enable-ssh-support --write-env-file "$gnupginf")
+#fi
 
-exec awesome
+
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
-#eval $(gpg-agent --daemon --enable-ssh-support)
+
+exec awesome
+
+#eval $(gpg-agent -s --enable-ssh-support --daemon)
+#eval $(gpg-agent -s --enable-ssh-support --daemon --write-env-file "$gnupginf")

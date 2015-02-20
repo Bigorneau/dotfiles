@@ -1,2 +1,7 @@
 typeset -U path
 path=(~/bin ~/.gem/ruby/2.1.0/bin $path)
+
+source $HOME/.gnupg/gpg-agent.env
+export GPG_AGENT_INFO
+export SSH_AUTH_SOCK
+export SSH_AGENT_PID
