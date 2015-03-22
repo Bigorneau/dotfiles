@@ -1,12 +1,12 @@
-all: server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome mutt
+all: server dev desktop
 
-.PHONY: all clean server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome mutt
-
-server: vim emacs bash zsh screen tmux
+server: vim emacs bash zsh screen tmux systemd yaourt
 
 dev: server git mercurial mutt
 
-desktop: dev uzbl xorg awesome task mplayer irssi mutt
+desktop: dev uzbl xorg awesome task mplayer irssi mutt livestreamer
+
+.PHONY: all clean server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome mutt
 
 bash:
 	make -C bash
