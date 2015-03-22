@@ -1,2 +1,7 @@
 typeset -U path
 path=(~/bin ~/.gem/ruby/2.1.0/bin $path)
+
+if [[ -z $SSH_AUTH_SOCK ]]
+then
+	export SSH_AUTH_SOCK=/tmp/ssh-agent.socket
+fi
