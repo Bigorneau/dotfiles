@@ -14,4 +14,4 @@ reload-rules:
 	-udevadm trigger
 
 clean:
-	-rm -i $(UDEV_RULES_DIR)/$(DEVICE_NAME)
+	-rm --interactive $(UDEV_RULES_DIR)/$(DEVICE_NAME)

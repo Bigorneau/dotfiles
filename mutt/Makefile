@@ -9,13 +9,13 @@ all: mutt mailcap
 .PHONY: all clean mutt mailcap
 
 mutt:
-	-ln -s $(CURRENT_DIR)/$(MUTTRC) $(HOME)/.muttrc
-	-ln -s $(CURRENT_DIR)/$(MUTTDIR) $(HOME)/.mutt
+	-ln --symbolic $(CURRENT_DIR)/$(MUTTRC) $(HOME)/.muttrc
+	-ln --symbolic $(CURRENT_DIR)/$(MUTTDIR) $(HOME)/.mutt
 
 mailcap:
-	-ln -s $(CURRENT_DIR)/$(MAILCAP) $(HOME)/.mailcap
+	-ln --symbolic $(CURRENT_DIR)/$(MAILCAP) $(HOME)/.mailcap
 
 clean:
-	-rm -i $(HOME)/.muttrc
-	-rm -i $(HOME)/.mutt
-	-rm -i $(HOME)/.mailcap
+	-rm --interactive $(HOME)/.muttrc
+	-rm --interactive $(HOME)/.mutt
+	-rm --interactive $(HOME)/.mailcap

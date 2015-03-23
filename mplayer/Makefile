@@ -7,7 +7,7 @@ all: mplayer
 .PHONY: all clean mplayer
 
 mplayer:
-	-ln -s $(CURRENT_DIR)/$(MPLAYER_DIR) $(HOME)/.mplayer
+	-ln --symbolic $(CURRENT_DIR)/$(MPLAYER_DIR) $(HOME)/.mplayer
 
 clean:
-	-rm -i $(HOME)/.mplayer
+	-rm --interactive $(HOME)/.mplayer

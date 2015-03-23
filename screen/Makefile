@@ -7,7 +7,7 @@ all: screen
 .PHONY: all clean screen
 
 screen:
-	-ln -s $(CURRENT_DIR)/$(SCREENRC) $(HOME)/.screenrc
+	-ln --symbolic $(CURRENT_DIR)/$(SCREENRC) $(HOME)/.screenrc
 
 clean:
-	-rm -i $(HOME)/.screenrc
+	-rm --interactive $(HOME)/.screenrc

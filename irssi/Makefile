@@ -7,7 +7,7 @@ all: irssi
 .PHONY: all clean irssi
 
 irssi:
-	-ln -s $(CURRENT_DIR)/$(IRSSI_DIR) $(HOME)/.irssi
+	-ln --symbolic $(CURRENT_DIR)/$(IRSSI_DIR) $(HOME)/.irssi
 
 clean:
-	-rm -i $(HOME)/.irssi
+	-rm --interactive $(HOME)/.irssi

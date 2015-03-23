@@ -10,7 +10,7 @@ devel:
 	-mkdir -p $(HOME)/aur/devel
 
 yaourt: devel
-	-ln -s $(CURRENT_DIR)/$(YAOURTRC) $(HOME)/.yaourtrc
+	-ln --symbolic $(CURRENT_DIR)/$(YAOURTRC) $(HOME)/.yaourtrc
 
 clean:
-	-rm -i $(HOME)/.yaourtrc
+	-rm --interactive $(HOME)/.yaourtrc

@@ -10,13 +10,13 @@ all: xorg
 .PHONY: all clean xorg
 
 xorg:
-	-ln -s $(CURRENT_DIR)/$(XRESOURCES) $(HOME)/.Xresources
-	-ln -s $(CURRENT_DIR)/$(XDEFAULTS) $(HOME)/.Xdefaults
-	-ln -s $(CURRENT_DIR)/$(XMODMAP) $(HOME)/.Xmodmap
-	-ln -s $(CURRENT_DIR)/$(XINITRC) $(HOME)/.xinitrc
+	-ln --symbolic $(CURRENT_DIR)/$(XRESOURCES) $(HOME)/.Xresources
+	-ln --symbolic $(CURRENT_DIR)/$(XDEFAULTS) $(HOME)/.Xdefaults
+	-ln --symbolic $(CURRENT_DIR)/$(XMODMAP) $(HOME)/.Xmodmap
+	-ln --symbolic $(CURRENT_DIR)/$(XINITRC) $(HOME)/.xinitrc
 
 clean:
-	-rm -i $(HOME)/.Xresources
-	-rm -i $(HOME)/.Xdefaults
-	-rm -i $(HOME)/.Xmodmap
-	-rm -i $(HOME)/.xinitrc
+	-rm --interactive $(HOME)/.Xresources
+	-rm --interactive $(HOME)/.Xdefaults
+	-rm --interactive $(HOME)/.Xmodmap
+	-rm --interactive $(HOME)/.xinitrc

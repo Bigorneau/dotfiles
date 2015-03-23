@@ -12,4 +12,4 @@ user-services:
 	-ln -t $(XDG_CONFIG_HOME)/systemd/user -s $(CURRENT_DIR)/$(SYSTEMD_USER_DIR)/*.service
 
 clean:
-	-rm -fr $(XDG_CONFIG_HOME)/systemd/user/*
+	-rm --recursive --force $(XDG_CONFIG_HOME)/systemd/user/*

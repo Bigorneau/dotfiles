@@ -7,7 +7,7 @@ all: livestreamer
 .PHONY: all clean livestreamer
 
 livestreamer:
-	-ln -s $(CURRENT_DIR)/$(LIVESTREAMERRC) $(HOME)/.livestreamerrc
+	-ln --symbolic $(CURRENT_DIR)/$(LIVESTREAMERRC) $(HOME)/.livestreamerrc
 
 clean:
-	-rm -i $(HOME)/.livestreamerrc
+	-rm --interactive $(HOME)/.livestreamerrc

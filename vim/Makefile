@@ -12,5 +12,5 @@ vim:
 	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(VIMDIR) $(HOME)/.vim
 
 clean:
-	-rm -i $(HOME)/.vimrc
-	-rm -i $(HOME)/.vim
+	-rm --interactive $(HOME)/.vimrc
+	-rm --interactive $(HOME)/.vim

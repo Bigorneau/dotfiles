@@ -5,9 +5,9 @@ all: profile
 .PHONY: all clean profile
 
 profile:
-	-ln -s $(CURRENT_DIR)/profile $(HOME)/.profile
-	-ln -s $(CURRENT_DIR)/pam_environment $(HOME)/.pam_environment
+	-ln --symbolic $(CURRENT_DIR)/profile $(HOME)/.profile
+	-ln --symbolic $(CURRENT_DIR)/pam_environment $(HOME)/.pam_environment
 
 clean:
-	-rm -i $(HOME)/.profile
-	-rm -i $(HOME)/.pam_environment
+	-rm --interactive $(HOME)/.profile
+	-rm --interactive $(HOME)/.pam_environment
