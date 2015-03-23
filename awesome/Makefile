@@ -1,3 +1,4 @@
+XDG_CONFIG_HOME ?= $(HOME)/.config
 CURRENT_DIR = $(shell pwd)
 
 AWESOME_DIR = awesome
@@ -10,14 +11,14 @@ all: awesome extras
 .PHONY: all clean awesome extras
 
 awesome:
-	-mkdir $(HOME)/.config
-	-ln -s $(CURRENT_DIR)/$(AWESOME_DIR) $(HOME)/.config/awesome
+	-mkdir $(XDG_CONFIG_HOME)
+	-ln -s $(CURRENT_DIR)/$(AWESOME_DIR) $(XDG_CONFIG_HOME)
 
 extras:
 	-git clone $(VICIOUS_REPO) $(AWESOME_DIR)/vicious
 	-git clone $(OBVIOUS_REPO) $(AWESOME_DIR)/obvious
 
 clean:
-	-rm -i $(HOME)/.config/awesome
+	-rm -i $(XDG_CONFIG_HOME)/awesome
 	-rm -fr $(AWESOME_DIR)/vicious
 	-rm -fr $(AWESOME_DIR)/obvious
