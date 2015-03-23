@@ -5,22 +5,21 @@ BASHRC = bashrc
 BASH_LOGOUT = bash_logout
 INPUTRC = inputrc
 
-BASHRC_CROSS = bashrc_cross
+ifneq ($(shell emerge --version 2>/dev/null),)
+	BASHRC = bashrc_cross
+else
+	BASHRC = bashrc
+endif
 
 all: bash
 
 .PHONY: all clean bash genbox common
 
-common:
+bash:
 	-ln --symbolic $(CURRENT_DIR)/$(BASH_PROFILE) $(HOME)/.bash_profile
 	-ln --symbolic $(CURRENT_DIR)/$(BASH_LOGOUT) $(HOME)/.bash_logout
 	-ln --symbolic $(CURRENT_DIR)/$(INPUTRC) $(HOME)/.inputrc
-
-bash: common
 	-ln --symbolic $(CURRENT_DIR)/$(BASHRC) $(HOME)/.bashrc
-
-genbox: common
-	-ln --symbolic $(CURRENT_DIR)/$(BASHRC_CROSS) $(HOME)/.bashrc
 
 clean:
 	-rm --interactive $(HOME)/.bash_profile
