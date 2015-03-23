@@ -9,7 +9,7 @@ all: uzbl
 
 uzbl:
 	-mkdir -p $(XDG_CONFIG_HOME)
-	-ln -s $(CURRENT_DIR)/$(UZBL_DIR) $(XDG_CONFIG_HOME)
+	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(UZBL_DIR) $(XDG_CONFIG_HOME)/uzbl
 
 clean:
 	-rm -i $(XDG_CONFIG_HOME)/uzbl

@@ -8,8 +8,8 @@ all: vim
 .PHONY: all clean vim
 
 vim:
-	-ln -s $(CURRENT_DIR)/$(VIMRC) $(HOME)/.vimrc
-	-ln -s $(CURRENT_DIR)/$(VIMDIR) $(HOME)/.vim
+	-ln --symbolic $(CURRENT_DIR)/$(VIMRC) $(HOME)/.vimrc
+	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(VIMDIR) $(HOME)/.vim
 
 clean:
 	-rm -i $(HOME)/.vimrc

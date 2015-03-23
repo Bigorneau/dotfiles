@@ -12,7 +12,7 @@ all: awesome extras
 
 awesome:
 	-mkdir $(XDG_CONFIG_HOME)
-	-ln -s $(CURRENT_DIR)/$(AWESOME_DIR) $(XDG_CONFIG_HOME)
+	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(AWESOME_DIR) $(XDG_CONFIG_HOME)/awesome
 
 extras:
 	-git clone $(VICIOUS_REPO) $(AWESOME_DIR)/vicious
