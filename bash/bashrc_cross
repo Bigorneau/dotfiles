@@ -105,9 +105,9 @@ fi
 # druff
 #PS1='\[\e[01;33m\][\h] \[\e[01;31m\]genbox\[\e[01;34m\] \W\[\033[0m\]$(ps1_end) \$\[\e[00m\] '
 if [[ ${EUID} == 0 ]] ; then
-	PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W\[\033[00m\] ($(ps1_end)) \[\033[01;34m\]\$\[\033[00m\] '
+	PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W\[\033[00m\] ($(ps1_end2)) \[\033[01;34m\]\$\[\033[00m\] '
 else
-	PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[00m\] ($(ps1_end)) \[\033[01;34m\] \$\[\033[00m\] '
+	PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[00m\] ($(ps1_end2)) \[\033[01;34m\] \$\[\033[00m\] '
 fi
 
 export TARGETS=("" "")
@@ -124,6 +124,14 @@ ps1_end() {
 	[ "${changed}" = 1 ] && echo -en $red
 	echo -n "${TARGETS[0]}"
 	[ "${changed}" = 1 ] && echo -en $no
+}
+
+ps1_end2() {
+	#local package="$(xtarget --get-package | cut -f2 -d '/')"
+	#local version="$(xtarget --get-version)"
+	local current="/usr/targets/current/root/etc/prebuilt-release"
+	local prebuilt="$(cut -f 2 -d '/' ${current})"
+	echo -n "${prebuilt}"
 }
 
 #------------------------------------------------------------
