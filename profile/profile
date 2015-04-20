@@ -1,1 +1,2 @@
 export SSH_AUTH_SOCK=/tmp/ssh-agent.socket
+export GPG_AGENT_INFO=/tmp/gpg-agent.socket
