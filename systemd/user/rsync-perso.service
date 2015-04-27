@@ -1,0 +1,10 @@
+[Unit]
+Description=rsync stuffs
+
+[Service]
+Type=forking
+#Environment=SSH_AUTH_SOCK=/tmp/ssh-agent.socket
+ExecStart=/usr/bin/notify-send --urgency=critical "Hello, message testing"
+
+[Install]
+WantedBy=default.target

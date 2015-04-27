@@ -9,7 +9,7 @@ all: user-services
 
 user-services:
 	-mkdir -pv $(XDG_CONFIG_HOME)/systemd/user
-	-ln -t $(XDG_CONFIG_HOME)/systemd/user -s $(CURRENT_DIR)/$(SYSTEMD_USER_DIR)/*.service
+	-ln -t $(XDG_CONFIG_HOME)/systemd/user -s $(CURRENT_DIR)/$(SYSTEMD_USER_DIR)/*
 
 clean:
 	-rm --recursive --force $(XDG_CONFIG_HOME)/systemd/user/*
