@@ -5,7 +5,7 @@ IgnoreOnIsolate=true
 [Service]
 Type=forking
 Environment=GPG_AGENT_INFO=/tmp/gpg-agent.socket
-ExecStart=/usr/bin/gpg-agent --verbose --debug-level expert --homedir %h/.gnupg --use-standard-socket --extra-socket $GPG_AGENT_INFO --daemon
+ExecStart=/usr/bin/gpg-agent --verbose --homedir %h/.gnupg --use-standard-socket --extra-socket $GPG_AGENT_INFO --daemon
 ExecStop=/usr/bin/pkill gpg-agent
 Restart=on-abort
 
