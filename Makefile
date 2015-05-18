@@ -1,6 +1,6 @@
 all: server dev desktop
 
-server: vim emacs bash zsh screen tmux systemd yaourt
+server: vim emacs bash zsh screen tmux systemd yaourt profile
 
 dev: server git mercurial mutt
 
@@ -53,6 +53,9 @@ irssi:
 mutt:
 	make -C mutt
 
+profile:
+	make -C profile
+
 # clean
 clean:
 	make clean -C vim
@@ -70,3 +73,4 @@ clean:
 	make clean -C mplayer
 	make clean -C irssi
 	make clean -C mutt
+	make clean -C profile
