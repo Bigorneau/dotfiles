@@ -1,2 +1,5 @@
 export SSH_AUTH_SOCK=/tmp/ssh-agent.socket
 export GPG_AGENT_INFO=/tmp/gpg-agent.socket
+
+# GCC 4.9: https://gcc.gnu.org/onlinedocs/gcc/Language-Independent-Options.html
+export GCC_COLORS='error=01;31:warning=01;33:note=01;34:caret=01;32:locus=01:quote=01'
