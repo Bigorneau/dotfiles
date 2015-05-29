@@ -12,8 +12,12 @@ vimdiff.args = -d $output $base $local $other -c "wincmd J"
 [diff]
 git=1
 
+[pager]
+pager = LESS='FRX' less
+
 [extensions]
 color =
+pager =
 transplant =
 
 [color]
