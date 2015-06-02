@@ -7,4 +7,9 @@ systemctl --user start gpg-agent
 # https://www.gnupg.org/faq/whats-new-in-2.1.html#autostart
 # systemctl --user start gpg-agent
 
+if [ -f $HOME/.xinitrc.local ];
+then
+	$HOME/.xinitrc.local
+fi
+
 exec awesome
