@@ -11,3 +11,8 @@ export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
 # go
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
+
+if [ -f /usr/bin/systemctl ];
+then
+	systemctl --user import-environment PATH
+fi
