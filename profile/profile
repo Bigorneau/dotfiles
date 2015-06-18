@@ -12,7 +12,14 @@ export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
+# systemd
 if [ -f /usr/bin/systemctl ];
 then
 	systemctl --user import-environment PATH
+fi
+
+# pacman
+if [ -f /usr/bin/pacman ];
+then
+	source /usr/share/doc/pkgfile/command-not-found.bash
 fi
