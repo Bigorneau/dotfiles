@@ -1,0 +1,2 @@
+# source ~/profile with sh emulation
+emulate sh -c '. $HOME/.profile'

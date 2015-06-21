@@ -1,12 +1,12 @@
 all: server dev desktop
 
-server: vim emacs bash zsh screen tmux systemd yaourt
+server: vim emacs bash zsh screen tmux systemd yaourt profile
 
 dev: server git mercurial mutt
 
 desktop: dev uzbl xorg awesome task mplayer irssi mutt livestreamer
 
-.PHONY: all clean server dev desktop bash zsh screen tmux vim git mercurial uzbl xorg awesome mutt
+.PHONY: all clean server dev desktop bash zsh screen tmux vim emacs git mercurial uzbl xorg awesome task mplayer irssi mutt profile livestreamer systemd yaourt
 
 bash:
 	make -C bash
@@ -53,6 +53,18 @@ irssi:
 mutt:
 	make -C mutt
 
+profile:
+	make -C profile
+
+livestreamer:
+	make -C livestreamer
+
+systemd:
+	make -C systemd
+
+yaourt:
+	make -C yaourt
+
 # clean
 clean:
 	make clean -C vim
@@ -70,3 +82,7 @@ clean:
 	make clean -C mplayer
 	make clean -C irssi
 	make clean -C mutt
+	make clean -C profile
+	make clean -C livestreamer
+	make clean -C systemd
+	make clean -C yaourt

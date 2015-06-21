@@ -1,4 +1,9 @@
 vim/vim/.netrwhist
+vim/autoload/pathogen.vim
+vim/vim/bundle/
 awesome/awesome/vicious
 awesome/awesome/obvious
 irsii/irsii/config
+mutt/mutt/hcache
+mutt/mutt/cache
+mutt/mutt/*.gpg

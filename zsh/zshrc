@@ -123,7 +123,7 @@ fi
 ## compsys related snippets ##
 
 ## changed completer settings
-zstyle ':completion:*' completer _complete _correct _approximate
+#zstyle ':completion:*' completer _complete _correct _approximate
 zstyle ':completion:*' expand prefix suffix
 
 ## another different completer setting: expand shell aliases

@@ -85,3 +85,6 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
 " links
 " http://vi-improved.org/vimrc.html
+
+" pathogen
+execute pathogen#infect()

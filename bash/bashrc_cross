@@ -130,7 +130,10 @@ ps1_end2() {
 	#local package="$(xtarget --get-package | cut -f2 -d '/')"
 	#local version="$(xtarget --get-version)"
 	local current="/usr/targets/current/root/etc/prebuilt-release"
-	local prebuilt="$(cut -f 2 -d '/' ${current})"
+	local prebuilt=""
+	if [ -f ${current} ]; then
+		prebuilt="$(cut -f 2 -d '/' ${current})"
+	fi
 	echo -n "${prebuilt}"
 }
 
