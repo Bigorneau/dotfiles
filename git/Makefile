@@ -10,4 +10,4 @@ git:
 	-ln --symbolic $(CURRENT_DIR)/$(GITCONFIG) $(HOME)/.gitconfig
 
 clean:
-	-rm --interactive $(HOME)/.gitconfig
+	-rm $(RM_OPTIONS) $(HOME)/.gitconfig

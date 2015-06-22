@@ -10,4 +10,4 @@ mplayer:
 	-ln --symbolic $(CURRENT_DIR)/$(MPLAYER_DIR) $(HOME)/.mplayer
 
 clean:
-	-rm --interactive $(HOME)/.mplayer
+	-rm $(RM_OPTIONS) $(HOME)/.mplayer

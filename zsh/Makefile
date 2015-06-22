@@ -18,8 +18,8 @@ zsh:
 	-ln --symbolic $(CURRENT_DIR)/$(ZLOGOUT) $(HOME)/.zlogout
 
 clean:
-	-rm --interactive $(HOME)/.zshenv
-	-rm --interactive $(HOME)/.zprofile
-	-rm --interactive $(HOME)/.zshrc
-	-rm --interactive $(HOME)/.zlogin
-	-rm --interactive $(HOME)/.zlogout
+	-rm $(RM_OPTIONS) $(HOME)/.zshenv
+	-rm $(RM_OPTIONS) $(HOME)/.zprofile
+	-rm $(RM_OPTIONS) $(HOME)/.zshrc
+	-rm $(RM_OPTIONS) $(HOME)/.zlogin
+	-rm $(RM_OPTIONS) $(HOME)/.zlogout

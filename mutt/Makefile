@@ -16,6 +16,6 @@ mailcap:
 	-ln --symbolic $(CURRENT_DIR)/$(MAILCAP) $(HOME)/.mailcap
 
 clean:
-	-rm --interactive $(HOME)/.muttrc
-	-rm --interactive $(HOME)/.mutt
-	-rm --interactive $(HOME)/.mailcap
+	-rm $(RM_OPTIONS) $(HOME)/.muttrc
+	-rm $(RM_OPTIONS) $(HOME)/.mutt
+	-rm $(RM_OPTIONS) $(HOME)/.mailcap

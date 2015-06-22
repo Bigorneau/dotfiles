@@ -22,7 +22,7 @@ bash:
 	-ln --symbolic $(CURRENT_DIR)/$(BASHRC) $(HOME)/.bashrc
 
 clean:
-	-rm --interactive $(HOME)/.bash_profile
-	-rm --interactive $(HOME)/.bashrc
-	-rm --interactive $(HOME)/.bash_logout
-	-rm --interactive $(HOME)/.inputrc
+	-rm $(RM_OPTIONS) $(HOME)/.bash_profile
+	-rm $(RM_OPTIONS) $(HOME)/.bashrc
+	-rm $(RM_OPTIONS) $(HOME)/.bash_logout
+	-rm $(RM_OPTIONS) $(HOME)/.inputrc

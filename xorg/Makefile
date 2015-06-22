@@ -16,7 +16,7 @@ xorg:
 	-ln --symbolic $(CURRENT_DIR)/$(XINITRC) $(HOME)/.xinitrc
 
 clean:
-	-rm --interactive $(HOME)/.Xresources
-	-rm --interactive $(HOME)/.Xdefaults
-	-rm --interactive $(HOME)/.Xmodmap
-	-rm --interactive $(HOME)/.xinitrc
+	-rm $(RM_OPTIONS) $(HOME)/.Xresources
+	-rm $(RM_OPTIONS) $(HOME)/.Xdefaults
+	-rm $(RM_OPTIONS) $(HOME)/.Xmodmap
+	-rm $(RM_OPTIONS) $(HOME)/.xinitrc

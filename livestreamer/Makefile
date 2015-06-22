@@ -10,4 +10,4 @@ livestreamer:
 	-ln --symbolic $(CURRENT_DIR)/$(LIVESTREAMERRC) $(HOME)/.livestreamerrc
 
 clean:
-	-rm --interactive $(HOME)/.livestreamerrc
+	-rm $(RM_OPTIONS) $(HOME)/.livestreamerrc

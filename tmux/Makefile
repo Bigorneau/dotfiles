@@ -10,4 +10,4 @@ tmux:
 	-ln --symbolic $(CURRENT_DIR)/$(TMUXCONF) $(HOME)/.tmux.conf
 
 clean:
-	-rm --interactive $(HOME)/.tmux.conf
+	-rm $(RM_OPTIONS) $(HOME)/.tmux.conf

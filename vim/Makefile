@@ -25,7 +25,7 @@ bundle:
 	-git clone $(VIM_EDITORCONFIG_REPOS) $(CURRENT_DIR)/$(BUNDLE_DIR)/editorconfig
 
 clean:
-	-rm --interactive $(HOME)/.vimrc
-	-rm --interactive $(HOME)/.vim
-	-rm --interactive $(CURRENT_DIR)/$(AUTOLOAD_DIR)/pathogen.vim
+	-rm $(RM_OPTIONS) $(HOME)/.vimrc
+	-rm $(RM_OPTIONS) $(HOME)/.vim
+	-rm $(RM_OPTIONS) $(CURRENT_DIR)/$(AUTOLOAD_DIR)/pathogen.vim
 	-rm --recursive --force $(CURRENT_DIR)/$(BUNDLE_DIR)/editorconfig

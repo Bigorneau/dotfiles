@@ -10,4 +10,4 @@ task:
 	-ln --symbolic $(CURRENT_DIR)/$(TASKRC) $(HOME)/.taskrc
 
 clean:
-	-rm --interactive $(HOME)/.taskrc
+	-rm $(RM_OPTIONS) $(HOME)/.taskrc

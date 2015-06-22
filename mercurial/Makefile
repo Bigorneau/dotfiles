@@ -10,4 +10,4 @@ mercurial:
 	-ln --symbolic $(CURRENT_DIR)/$(HGRC) $(HOME)/.hgrc
 
 clean:
-	-rm --interactive $(HOME)/.hgrc
+	-rm $(RM_OPTIONS) $(HOME)/.hgrc
