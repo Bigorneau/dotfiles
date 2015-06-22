@@ -10,7 +10,7 @@ all: mutt mailcap
 
 mutt:
 	-ln --symbolic $(CURRENT_DIR)/$(MUTTRC) $(HOME)/.muttrc
-	-ln --symbolic $(CURRENT_DIR)/$(MUTTDIR) $(HOME)/.mutt
+	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(MUTTDIR) $(HOME)/.mutt
 
 mailcap:
 	-ln --symbolic $(CURRENT_DIR)/$(MAILCAP) $(HOME)/.mailcap
