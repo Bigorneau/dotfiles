@@ -271,3 +271,19 @@ complete -F _packages xmerge
 xrm() {
 	for target in "$@"; do xtarget -d $target; done;
 }
+
+xprebuilt() {
+	if [ "$#" -ne 3 ]; then return 1; fi
+	local target=$1
+	local version=$2
+	local arch=$3
+	local name=$(date +%Y%m%d-%H%M)-$target
+	(export USE="prebuilt debuginfo"; xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch)
+}
+
+xbb() {
+	if [ "$#" -lt 2 ]; then return 1; fi
+	local package=$1
+	shift
+	xbuild $(xexec equery which $package) $@
+}
