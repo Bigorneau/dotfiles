@@ -185,29 +185,30 @@ xvim() {
 xtra() {
 	x_find $1 || return 1
 	cd $path || return 1
-	echo $path
-	echo $filename
+	#echo $path
+	#echo $filename
 
 	local prefix_base=$(pwd)/prefix
 	local prefix_n=
 	local prefix="${prefix_base}${prefix_n}"
 	local exists=0
 	while [ -e "$prefix" ]; do
-		[ "$2" = "" ] && exists=1 && echo "'$prefix' exists" && echo break && break
+		#[ "$2" = "" ] && exists=1 && echo "'$prefix' exists" && echo break && break
+		[ "$2" = "" ] && exists=1 && break
 		[ "$prefix_n" = "" ] && prefix_n=0
 		prefix_n=$[ $prefix_n + 1 ]
 		prefix="${prefix_base}${prefix_n}"
 	done
 
-	echo "prefix=${prefix}"
-	echo "exists=${exists}"
+	#echo "prefix=${prefix}"
+	#echo "exists=${exists}"
 	if [ "$exists" = 0 ]; then
 		echo 'BUILD_PREFIX=$(pwd)/prefix' xbuild "$filename" clean setup fetch unpack
 		BUILD_PREFIX="${prefix}" xbuild "$filename" clean setup fetch unpack || return 2
 	fi
 	cd ${prefix}/*/*/work/*/ || return 3
 	[ "$TMUX" != "" ] && tmux rename-window "${filename%\.ebuild}"
-	[ -e cscope.out ] || (echo cscope && cscope -Rb)
+	[ -e cscope.out ] || (cscope -Rb 2> /dev/null)
 }
 
 xl() {
@@ -236,6 +237,23 @@ _packages() {
 	COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
 
 	return 0;
+}
+
+_targets() {
+	local cur prev opts base
+	local targetdir=/usr/local/portage/targets/product-targets/
+	COMPREPLY=()
+	cur="${COMP_WORDS[COMP_CWORD]}"
+	prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+	local names=$( (
+		shopt -s nullglob
+		shopt -s extglob
+		find /usr/local/portage/targets/product-targets/ -name "$cur*.ebuild" -type f -printf "%f\n" | sed 's|\.ebuild||g'
+	) )
+	COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
+
+	return 0
 }
 
 complete -F _packages xcd
@@ -278,6 +296,15 @@ xprebuilt() {
 	local version=$2
 	local arch=$3
 	local name=$(date +%Y%m%d-%H%M)-$target
+
+	# arch
+	# grep $targetdir/$target/$target-$version-$version.ebuild | cut -d "\"" -f 2
+
+	local targetdir=/usr/local/portage/targets/product-targets/
+	if [ ! -e $targetdir/$target/$target-$version-$version.ebuild ]; then
+		xtarget --sync
+	fi
+
 	(export USE="prebuilt debuginfo"; xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch)
 }
 
@@ -287,3 +314,5 @@ xbb() {
 	shift
 	xbuild $(xexec equery which $package) $@
 }
+
+complete -F _targets xprebuilt
