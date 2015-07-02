@@ -203,8 +203,9 @@ xtra() {
 	#echo "prefix=${prefix}"
 	#echo "exists=${exists}"
 	if [ "$exists" = 0 ]; then
-		echo 'BUILD_PREFIX=$(pwd)/prefix' xbuild "$filename" clean setup fetch unpack
-		BUILD_PREFIX="${prefix}" xbuild "$filename" clean setup fetch unpack || return 2
+		#echo 'BUILD_PREFIX=$(pwd)/prefix' xbuild "$filename" clean setup fetch unpack
+		#BUILD_PREFIX="${prefix}" xbuild "$filename" clean setup fetch unpack || return 2
+		xbuild "$filename" clean setup fetch unpack || return 2
 	fi
 	cd ${prefix}/*/*/work/*/ || return 3
 	[ "$TMUX" != "" ] && tmux rename-window "${filename%\.ebuild}"
@@ -240,17 +241,37 @@ _packages() {
 }
 
 _targets() {
-	local cur prev opts base
+	local cur prev prev2 opts base names tt
 	local targetdir=/usr/local/portage/targets/product-targets/
 	COMPREPLY=()
 	cur="${COMP_WORDS[COMP_CWORD]}"
-	prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-	local names=$( (
-		shopt -s nullglob
-		shopt -s extglob
-		find /usr/local/portage/targets/product-targets/ -name "$cur*.ebuild" -type f -printf "%f\n" | sed 's|\.ebuild||g'
-	) )
+	case "${COMP_CWORD}" in
+	1)
+		names=$( (
+			shopt -s nullglob
+			shopt -s extglob
+			find $targetdir -name "$cur*.ebuild" -type f -printf "%f\n" | sed 's|\-[0-9.]*\.ebuild||g' | uniq
+		) );;
+	2)
+		names=$( (
+			shopt -s nullglob
+			shopt -s extglob
+			prev="${COMP_WORDS[COMP_CWORD-1]}"
+			find $targetdir/$prev/ -name "$prev-$cur*.ebuild" -type f -printf "%f\n" | sed 's|\.ebuild||g' | rev | cut -d "-" -f 1 | rev
+		) );;
+	3)
+		names=$( (
+			shopt -s nullglob
+			shopt -s extglob
+			prev="${COMP_WORDS[COMP_CWORD-1]}"
+			prev2="${COMP_WORDS[COMP_CWORD-2]}"
+			grep "KEYWORDS" $targetdir/$prev2/$prev2-$prev.ebuild | cut -d "\"" -f 2
+		) );;
+	*)
+		names=""
+		;;
+	esac
 	COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
 
 	return 0
