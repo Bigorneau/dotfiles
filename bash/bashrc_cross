@@ -241,7 +241,7 @@ _packages() {
 }
 
 _targets() {
-	local cur prev prev2 opts base names tt
+	local cur prev prev2 opts base names
 	local targetdir=/usr/local/portage/targets/product-targets/
 	COMPREPLY=()
 	cur="${COMP_WORDS[COMP_CWORD]}"
@@ -266,7 +266,7 @@ _targets() {
 			shopt -s extglob
 			prev="${COMP_WORDS[COMP_CWORD-1]}"
 			prev2="${COMP_WORDS[COMP_CWORD-2]}"
-			grep "KEYWORDS" $targetdir/$prev2/$prev2-$prev.ebuild | cut -d "\"" -f 2
+			egrep "^KEYWORDS=" $targetdir/$prev2/$prev2-$prev.ebuild | cut -d "\"" -f 2
 		) );;
 	*)
 		names=""
