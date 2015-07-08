@@ -266,7 +266,7 @@ _targets() {
 			shopt -s extglob
 			prev="${COMP_WORDS[COMP_CWORD-1]}"
 			prev2="${COMP_WORDS[COMP_CWORD-2]}"
-			egrep "^KEYWORDS=" $targetdir/$prev2/$prev2-$prev.ebuild | cut -d "\"" -f 2
+			egrep "^KEYWORDS=" $targetdir/$prev2/$prev2-$prev.ebuild 2> /dev/null | cut -d "\"" -f 2
 		) );;
 	*)
 		names=""
