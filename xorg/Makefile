@@ -15,7 +15,7 @@ xorg:
 	-ln --symbolic $(CURRENT_DIR)/$(XDEFAULTS) $(HOME)/.Xdefaults
 	-ln --symbolic $(CURRENT_DIR)/$(XMODMAP) $(HOME)/.Xmodmap
 	-ln --symbolic $(CURRENT_DIR)/$(XINITRC) $(HOME)/.xinitrc
-	-ln --no-clobber $(CURRENT_DIR)/$(XINITRC_LOCAL) $(HOME)/.xinitrc.local
+	-cp --no-clobber $(CURRENT_DIR)/$(XINITRC_LOCAL) $(HOME)/.xinitrc.local
 
 clean:
 	-rm $(RM_OPTIONS) $(HOME)/.Xresources
