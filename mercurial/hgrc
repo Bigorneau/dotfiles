@@ -1,5 +1,8 @@
 %include .hgrc.local
 
+[defaults]
+log = --patch
+
 [ui]
 verbose = True
 merge =  vimdiff
