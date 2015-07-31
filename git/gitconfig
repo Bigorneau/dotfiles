@@ -22,3 +22,10 @@ tool = vimdiff3
 
 [branch]
 autosetuprebase = always
+
+[push]
+default = nothing
+
+# Use `hexdump` to diff binary files
+[diff "bin"]
+textconv = hexdump -v -C
