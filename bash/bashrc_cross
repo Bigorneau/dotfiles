@@ -185,27 +185,27 @@ xvim() {
 xtra() {
 	x_find $1 || return 1
 	cd $path || return 1
-	#echo $path
-	#echo $filename
+	echo $path
+	echo $filename
 
 	local prefix_base=$(pwd)/prefix
 	local prefix_n=
 	local prefix="${prefix_base}${prefix_n}"
 	local exists=0
 	while [ -e "$prefix" ]; do
-		#[ "$2" = "" ] && exists=1 && echo "'$prefix' exists" && echo break && break
+		[ "$2" = "" ] && exists=1 && echo "'$prefix' exists" && echo break && break
 		[ "$2" = "" ] && exists=1 && break
 		[ "$prefix_n" = "" ] && prefix_n=0
 		prefix_n=$[ $prefix_n + 1 ]
 		prefix="${prefix_base}${prefix_n}"
 	done
 
-	#echo "prefix=${prefix}"
-	#echo "exists=${exists}"
+	echo "prefix=${prefix}"
+	echo "exists=${exists}"
 	if [ "$exists" = 0 ]; then
-		#echo 'BUILD_PREFIX=$(pwd)/prefix' xbuild "$filename" clean setup fetch unpack
-		#BUILD_PREFIX="${prefix}" xbuild "$filename" clean setup fetch unpack || return 2
-		xbuild "$filename" clean setup fetch unpack || return 2
+		echo 'BUILD_PREFIX=$(pwd)/prefix' xbuild "$filename" clean setup fetch unpack
+		BUILD_PREFIX="${prefix}" xbuild "$filename" clean setup fetch unpack || return 2
+		#xbuild "$filename" clean setup fetch unpack || return 2
 	fi
 	cd ${prefix}/*/*/work/*/ || return 3
 	[ "$TMUX" != "" ] && tmux rename-window "${filename%\.ebuild}"
@@ -328,6 +328,7 @@ xprebuilt() {
 
 	(export USE="prebuilt debuginfo"; xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch)
 }
+complete -F _targets xprebuilt
 
 xbb() {
 	if [ "$#" -lt 2 ]; then return 1; fi
@@ -335,5 +336,4 @@ xbb() {
 	shift
 	xbuild $(xexec equery which $package) $@
 }
-
-complete -F _targets xprebuilt
+complete -F _packages xbb
