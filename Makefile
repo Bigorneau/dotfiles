@@ -65,6 +65,9 @@ systemd:
 yaourt:
 	make -C yaourt
 
+top:
+	make -C top
+
 # clean
 clean:
 	make clean -C vim
@@ -86,3 +89,4 @@ clean:
 	make clean -C livestreamer
 	make clean -C systemd
 	make clean -C yaourt
+	make clean -C top
