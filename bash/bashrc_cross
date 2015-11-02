@@ -326,7 +326,9 @@ xprebuilt() {
 		xtarget --sync
 	fi
 
-	(export USE="prebuilt debuginfo"; xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch)
+	env -u USE="prebuilt debuginfo" xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch
+	# clean
+	rm -rf /tmp/.xtarget
 }
 complete -F _targets xprebuilt
 
