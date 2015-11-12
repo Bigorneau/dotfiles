@@ -5,3 +5,9 @@
 
 pacman -Syy pkgfile grml-zsh-config
 ```
+
+# python
+
+```bash
+pacman -Syy flake8
+```
