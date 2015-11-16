@@ -11,3 +11,12 @@ pacman -Syy pkgfile grml-zsh-config
 ```bash
 pacman -Syy flake8
 ```
+
+# system
+
+## cups
+
+```bash
+pacman -Syy cups cups-pdf
+systemctl enable org.cups.cupsd.service
+```
