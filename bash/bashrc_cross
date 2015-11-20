@@ -335,7 +335,9 @@ complete -F _targets xprebuilt
 xbb() {
 	if [ "$#" -lt 2 ]; then return 1; fi
 	local package=$1
+	local ebuild=$(xexec equery which $package 2>/dev/null)
+	if [ ! -f "$ebuild" ]; then echo "no package '$package'"; return 1; fi
 	shift
-	xbuild $(xexec equery which $package) $@
+	xbuild $ebuild $@
 }
 complete -F _packages xbb
