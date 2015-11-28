@@ -18,8 +18,8 @@ then
 	systemctl --user import-environment PATH
 fi
 
-# pacman
-if [ -f /usr/bin/pacman ];
+# pacman pkgfile
+if ([ -f /usr/bin/pacman ] && [ -f /usr/share/doc/pkgfile/command-not-found.bash ]);
 then
 	source /usr/share/doc/pkgfile/command-not-found.bash
 fi
