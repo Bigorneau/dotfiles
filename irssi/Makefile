@@ -10,4 +10,4 @@ irssi:
 	-ln --symbolic $(CURRENT_DIR)/$(IRSSI_DIR) $(HOME)/.irssi
 
 clean:
-	-rm --interactive $(HOME)/.irssi
+	-rm $(RM_OPTIONS) $(HOME)/.irssi

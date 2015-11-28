@@ -44,6 +44,10 @@ function isempty(s)
   return s == nil or s == ""
 end
 
+function isfunction(s)
+  return type(s) == "function"
+end
+
 function getUser(user)
   local s = twitchRequest("users/" .. user)
   if isempty(s) then
@@ -59,8 +63,23 @@ function getStream(stream)
     return
   end
   res = json.decode(s)
-  table_print(res)
+  -- table_print(res)
+  -- Is the stream is offline the field is decoded as a function (why?)
+  if not isempty(res.stream) and not isfunction(res.stream) then
+    local name = res.stream.channel.display_name
+    local url = res.stream.channel.url
+    local game = res.stream.channel.game
+    print(name .. " is live (" .. url .. ") on " .. game)
+  end
 end
 
-getUser("mistermv")
-getStream("tsm_theoddone")
+
+local streams = {
+  ["MisterMV"] = "mistermv",
+  ["TheOddOne"] = "tsm_theoddone",
+  ["OGaming Hearthstone"] = "ogaminghs",
+}
+
+for key, value in pairs(streams) do
+  getStream(value)
+end

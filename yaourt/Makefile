@@ -14,4 +14,4 @@ yaourt: devel
 	-ln --symbolic $(CURRENT_DIR)/$(YAOURTRC) $(HOME)/.yaourtrc
 
 clean:
-	-rm --interactive $(HOME)/.yaourtrc
+	-rm $(RM_OPTIONS) $(HOME)/.yaourtrc

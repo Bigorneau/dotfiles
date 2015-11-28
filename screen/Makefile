@@ -10,4 +10,4 @@ screen:
 	-ln --symbolic $(CURRENT_DIR)/$(SCREENRC) $(HOME)/.screenrc
 
 clean:
-	-rm --interactive $(HOME)/.screenrc
+	-rm $(RM_OPTIONS) $(HOME)/.screenrc

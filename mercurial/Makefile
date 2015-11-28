@@ -1,6 +1,7 @@
 CURRENT_DIR = $(shell pwd)
 
 HGRC = hgrc
+HGRC_LOCAL = hgrc.local
 
 all: mercurial
 
@@ -8,6 +9,7 @@ all: mercurial
 
 mercurial:
 	-ln --symbolic $(CURRENT_DIR)/$(HGRC) $(HOME)/.hgrc
+	-cp --no-clobber $(CURRENT_DIR)/$(HGRC_LOCAL) $(HOME)/.hgrc.local
 
 clean:
-	-rm --interactive $(HOME)/.hgrc
+	-rm $(RM_OPTIONS) $(HOME)/.hgrc

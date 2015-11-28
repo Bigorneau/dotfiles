@@ -12,5 +12,5 @@ emacs:
 	-ln --symbolic $(CURRENT_DIR)/$(EMACS_DIR) $(HOME)/.emacs.d
 
 clean:
-	-rm --interactive $(HOME)/.emacs
-	-rm --interactive $(HOME)/.emacs.d
+	-rm $(RM_OPTIONS) $(HOME)/.emacs
+	-rm $(RM_OPTIONS) $(HOME)/.emacs.d

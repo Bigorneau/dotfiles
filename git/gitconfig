@@ -22,3 +22,16 @@ tool = vimdiff3
 
 [branch]
 autosetuprebase = always
+
+[push]
+default = nothing
+
+# Use `hexdump` to diff binary files
+[diff "bin"]
+textconv = hexdump -v -C
+
+[diff "pdf"]
+textconv = pdfinfo
+
+[diff "zip"]
+textconv = unzip -v

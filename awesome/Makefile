@@ -19,6 +19,6 @@ extras:
 	-git clone $(OBVIOUS_REPO) $(AWESOME_DIR)/obvious
 
 clean:
-	-rm --interactive $(XDG_CONFIG_HOME)/awesome
+	-rm $(RM_OPTIONS) $(XDG_CONFIG_HOME)/awesome
 	-rm --recursive --force $(AWESOME_DIR)/vicious
 	-rm --recursive --force $(AWESOME_DIR)/obvious

@@ -194,6 +194,7 @@ xtra() {
 	local exists=0
 	while [ -e "$prefix" ]; do
 		[ "$2" = "" ] && exists=1 && echo "'$prefix' exists" && echo break && break
+		[ "$2" = "" ] && exists=1 && break
 		[ "$prefix_n" = "" ] && prefix_n=0
 		prefix_n=$[ $prefix_n + 1 ]
 		prefix="${prefix_base}${prefix_n}"
@@ -204,10 +205,11 @@ xtra() {
 	if [ "$exists" = 0 ]; then
 		echo 'BUILD_PREFIX=$(pwd)/prefix' xbuild "$filename" clean setup fetch unpack
 		BUILD_PREFIX="${prefix}" xbuild "$filename" clean setup fetch unpack || return 2
+		#xbuild "$filename" clean setup fetch unpack || return 2
 	fi
 	cd ${prefix}/*/*/work/*/ || return 3
 	[ "$TMUX" != "" ] && tmux rename-window "${filename%\.ebuild}"
-	[ -e cscope.out ] || (echo cscope && cscope -Rb)
+	[ -e cscope.out ] || (cscope -Rb 2> /dev/null)
 }
 
 xl() {
@@ -236,6 +238,43 @@ _packages() {
 	COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
 
 	return 0;
+}
+
+_targets() {
+	local cur prev prev2 opts base names
+	local targetdir=/usr/local/portage/targets/product-targets/
+	COMPREPLY=()
+	cur="${COMP_WORDS[COMP_CWORD]}"
+
+	case "${COMP_CWORD}" in
+	1)
+		names=$( (
+			shopt -s nullglob
+			shopt -s extglob
+			find $targetdir -name "$cur*.ebuild" -type f -printf "%f\n" | sed 's|\-[0-9.]*\.ebuild||g' | uniq
+		) );;
+	2)
+		names=$( (
+			shopt -s nullglob
+			shopt -s extglob
+			prev="${COMP_WORDS[COMP_CWORD-1]}"
+			find $targetdir/$prev/ -name "$prev-$cur*.ebuild" -type f -printf "%f\n" | sed 's|\.ebuild||g' | rev | cut -d "-" -f 1 | rev
+		) );;
+	3)
+		names=$( (
+			shopt -s nullglob
+			shopt -s extglob
+			prev="${COMP_WORDS[COMP_CWORD-1]}"
+			prev2="${COMP_WORDS[COMP_CWORD-2]}"
+			egrep "^KEYWORDS=" $targetdir/$prev2/$prev2-$prev.ebuild 2> /dev/null | cut -d "\"" -f 2
+		) );;
+	*)
+		names=""
+		;;
+	esac
+	COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
+
+	return 0
 }
 
 complete -F _packages xcd
@@ -267,3 +306,38 @@ _xmerge() {
 
 #complete -F _xmerge xmerge
 complete -F _packages xmerge
+
+xrm() {
+	for target in "$@"; do xtarget -d $target; done;
+}
+
+xprebuilt() {
+	if [ "$#" -ne 3 ]; then return 1; fi
+	local target=$1
+	local version=$2
+	local arch=$3
+	local name=$(date +%Y%m%d-%H%M)-$target
+
+	# arch
+	# grep $targetdir/$target/$target-$version-$version.ebuild | cut -d "\"" -f 2
+
+	local targetdir=/usr/local/portage/targets/product-targets/
+	if [ ! -e $targetdir/$target/$target-$version-$version.ebuild ]; then
+		xtarget --sync
+	fi
+
+	env -u USE="prebuilt debuginfo" xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch
+	# clean
+	rm -rf /tmp/.xtarget
+}
+complete -F _targets xprebuilt
+
+xbb() {
+	if [ "$#" -lt 2 ]; then return 1; fi
+	local package=$1
+	local ebuild=$(xexec equery which $package 2>/dev/null)
+	if [ ! -f "$ebuild" ]; then echo "no package '$package'"; return 1; fi
+	shift
+	xbuild $ebuild $@
+}
+complete -F _packages xbb

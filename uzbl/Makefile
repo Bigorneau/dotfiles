@@ -12,4 +12,4 @@ uzbl:
 	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(UZBL_DIR) $(XDG_CONFIG_HOME)/uzbl
 
 clean:
-	-rm --interactive $(XDG_CONFIG_HOME)/uzbl
+	-rm $(RM_OPTIONS) $(XDG_CONFIG_HOME)/uzbl

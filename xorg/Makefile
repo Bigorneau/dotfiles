@@ -4,6 +4,7 @@ XRESOURCES = Xresources
 XDEFAULTS = Xdefaults
 XMODMAP = Xmodmap
 XINITRC = xinitrc
+XINITRC_LOCAL = xinitrc.local
 
 all: xorg
 
@@ -14,9 +15,10 @@ xorg:
 	-ln --symbolic $(CURRENT_DIR)/$(XDEFAULTS) $(HOME)/.Xdefaults
 	-ln --symbolic $(CURRENT_DIR)/$(XMODMAP) $(HOME)/.Xmodmap
 	-ln --symbolic $(CURRENT_DIR)/$(XINITRC) $(HOME)/.xinitrc
+	-cp --no-clobber $(CURRENT_DIR)/$(XINITRC_LOCAL) $(HOME)/.xinitrc.local
 
 clean:
-	-rm --interactive $(HOME)/.Xresources
-	-rm --interactive $(HOME)/.Xdefaults
-	-rm --interactive $(HOME)/.Xmodmap
-	-rm --interactive $(HOME)/.xinitrc
+	-rm $(RM_OPTIONS) $(HOME)/.Xresources
+	-rm $(RM_OPTIONS) $(HOME)/.Xdefaults
+	-rm $(RM_OPTIONS) $(HOME)/.Xmodmap
+	-rm $(RM_OPTIONS) $(HOME)/.xinitrc

@@ -9,5 +9,5 @@ profile:
 	-ln --symbolic $(CURRENT_DIR)/pam_environment $(HOME)/.pam_environment
 
 clean:
-	-rm --interactive $(HOME)/.profile
-	-rm --interactive $(HOME)/.pam_environment
+	-rm $(RM_OPTIONS) $(HOME)/.profile
+	-rm $(RM_OPTIONS) $(HOME)/.pam_environment

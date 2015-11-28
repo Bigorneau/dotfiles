@@ -86,5 +86,15 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 " links
 " http://vi-improved.org/vimrc.html
 
-" pathogen
-execute pathogen#infect()
+" python version
+if has("python")
+    python import vim; from sys import version_info as v; vim.command('let python_version=%d' % (v[0] * 100 + v[1] * 10 + v[2]))
+else
+    let python_version=0
+endif
+
+if python_version >= 270
+    execute pathogen#infect()
+else
+    " nothing yet
+endif
