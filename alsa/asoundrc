@@ -2,13 +2,13 @@ defaults.pcm.card 0
 defaults.ctl.card 0
 
 pcm.!default {
-	type hw
-	card 0
+  type hw
+  card 0
 }
 
 ctl.!default {
-	type hw
-	card 0
+  type hw
+  card 0
 }
 
 # Use PulseAudio by default
@@ -27,3 +27,5 @@ ctl.!default {
   #card 1
   fallback "sysdefault"
 }
+
+# vim:set ft=alsaconf:
