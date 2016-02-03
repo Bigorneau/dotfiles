@@ -28,7 +28,8 @@ set imap_keepalive = 300
 set mail_check = 120
 
 #set index_format="%4C %Z %{%b %d} %-15.15L (%4l) %s"
-set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"
+#set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"
+set index_format="%Z [%d] %-30.30F (%-4.4c) %s"
 set signature="iconv -f utf-8 ~/mail/.signature |"
 set ispell="ispell --mode=email"
 set forward_format="Fwd: %s"
