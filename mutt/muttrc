@@ -51,8 +51,9 @@ auto_view video/*
 auto_view image/*
 
 # aliases
-set alias_file=~/.mutt/aliases
-source ~/.mutt/aliases
+set query_command = "abook --mutt-query '%s'"
+macro generic,index,pager \ca "<shell-escape>abook<return>" "launch abook"
+macro index,pager A "<pipe-message>abook --add-email<return>" "add the sender address to abook"
 
 source ~/.gpg.rc
 
