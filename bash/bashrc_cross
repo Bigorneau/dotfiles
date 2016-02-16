@@ -266,7 +266,7 @@ _targets() {
 			shopt -s extglob
 			prev="${COMP_WORDS[COMP_CWORD-1]}"
 			prev2="${COMP_WORDS[COMP_CWORD-2]}"
-			grep -Po '^KEYWORDS="[a-zA-Z0-9_~\n ]+"' "$targetdir/$prev2/$prev2-$prev.ebuild" 2> /dev/null | sed ':a;N;$!ba;s/\n/ /g' | cut -d "\"" -f 2
+			grep -Po '^KEYWORDS="[a-zA-Z0-9_~\n\t/ ]+"' "$targetdir/$prev2/$prev2-$prev.ebuild" 2> /dev/null | sed ':a;N;$!ba;s/\n/ /g' | cut -d "\"" -f 2
 		) );;
 	*)
 		names=""
