@@ -306,6 +306,7 @@ _xmerge() {
 
 #complete -F _xmerge xmerge
 complete -F _packages xmerge
+complete -F _packages xlist
 
 xrm() {
 	for target in "$@"; do xtarget -d $target; done;
