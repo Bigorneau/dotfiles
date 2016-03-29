@@ -50,10 +50,10 @@ auto_view text/html
 auto_view video/*
 auto_view image/*
 
-# aliases
-set query_command = "abook --mutt-query '%s'"
-macro generic,index,pager \ca "<shell-escape>abook<return>" "launch abook"
-macro index,pager A "<pipe-message>abook --add-email<return>" "add the sender address to abook"
+# Goobook
+set query_command = "goobook query '%s'"
+bind editor <Tab> complete-query
+macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
 
 source ~/.gpg.rc
 
