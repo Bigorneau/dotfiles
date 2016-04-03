@@ -266,7 +266,7 @@ _targets() {
 			shopt -s extglob
 			prev="${COMP_WORDS[COMP_CWORD-1]}"
 			prev2="${COMP_WORDS[COMP_CWORD-2]}"
-			grep -Po '^KEYWORDS="[a-zA-Z0-9_~\n ]+"' "$targetdir/$prev2/$prev2-$prev.ebuild" 2> /dev/null | sed ':a;N;$!ba;s/\n/ /g' | cut -d "\"" -f 2
+			grep -Po '^KEYWORDS="[a-zA-Z0-9_~\n\t/ ]+"' "$targetdir/$prev2/$prev2-$prev.ebuild" 2> /dev/null | sed ':a;N;$!ba;s/\n/ /g' | cut -d "\"" -f 2
 		) );;
 	*)
 		names=""
@@ -306,6 +306,7 @@ _xmerge() {
 
 #complete -F _xmerge xmerge
 complete -F _packages xmerge
+complete -F _packages xlist
 
 xrm() {
 	for target in "$@"; do xtarget -d $target; done;
@@ -336,8 +337,15 @@ xbb() {
 	if [ "$#" -lt 2 ]; then return 1; fi
 	local package=$1
 	local ebuild=$(xexec equery which $package 2>/dev/null)
+	local category=$(basename $(dirname $(dirname $ebuild)))
+	local version=$(echo $ebuild | sed 's|\.ebuild||g' | rev | cut -d "-" -f 1 | rev)
 	if [ ! -f "$ebuild" ]; then echo "no package '$package'"; return 1; fi
 	shift
 	xbuild $ebuild $@
+	if [[ $@ == *"unpack"* ]]; then
+		cd /usr/targets/$(curr_target)/work/$category/$package*/work/*/ || return 3
+		[ "$TMUX" != "" ] && tmux rename-window "${package}-${version}"
+		[ -e cscope.out ] || (cscope -Rb 2> /dev/null)
+	fi
 }
 complete -F _packages xbb
