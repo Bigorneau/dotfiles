@@ -120,6 +120,19 @@ cpuwidget = lain.widgets.cpu({
     end
 })
 
+-- ALSA volume
+volicon = wibox.widget.imagebox(beautiful.widget_vol)
+volumewidget = lain.widgets.alsa({
+    timeout = 1,
+    settings = function()
+        if volume_now.status == "off" then
+            volume_now.level = volume_now.level .. "M"
+        end
+
+        widget:set_markup(markup("#7493d2", volume_now.level .. "% "))
+    end
+})
+
 -- Net
 netdownicon = wibox.widget.imagebox(beautiful.widget_netdown)
 --netdownicon.align = "middle"
@@ -222,6 +235,8 @@ for s = 1, screen.count() do
     right_layout:add(netdowninfo)
     right_layout:add(netupicon)
     right_layout:add(netupinfo)
+    right_layout:add(volicon)
+    right_layout:add(volumewidget)
     right_layout:add(memicon)
     right_layout:add(memwidget)
     right_layout:add(cpuicon)
