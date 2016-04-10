@@ -6,10 +6,14 @@ AUTOLOAD_DIR = $(VIMDIR)/autoload
 BUNDLE_DIR = $(VIMDIR)/bundle
 
 VIM_PATHOGEN_URL = https://tpo.pe/pathogen.vim
-VIM_EDITORCONFIG_REPOS = https://github.com/editorconfig/editorconfig-vim.git
-VIM_FLAKE8_REPOS= https://github.com/nvie/vim-flake8.git
 
-BUNDLE_PACKAGES = editorconfig vim-flake8
+# bundle repositories
+VIM_EDITORCONFIG_REPOS = https://github.com/editorconfig/editorconfig-vim.git
+VIM_FLAKE8_REPOS = https://github.com/nvie/vim-flake8.git
+VIM_LUA_FTPLUGIN_REPOS = https://github.com/xolox/vim-lua-ftplugin.git
+VIM_XOLOX_MISC_REPOS = https://github.com/xolox/vim-misc.git
+
+BUNDLE_PACKAGES = editorconfig vim-flake8 vim-lua-ftplugin
 
 all: vim autoload bundle
 
@@ -31,6 +35,10 @@ editorconfig:
 
 vim-flake8:
 	-git clone $(VIM_FLAKE8_REPOS) $(CURRENT_DIR)/$(BUNDLE_DIR)/vim-flake8
+
+vim-lua-ftplugin:
+	-git clone $(VIM_LUA_FTPLUGIN_REPOS) $(CURRENT_DIR)/$(BUNDLE_DIR)/vim-lua-ftplugin
+	-git clone $(VIM_XOLOX_MISC_REPOS) $(CURRENT_DIR)/$(BUNDLE_DIR)/xolox-misc-repos
 
 clean:
 	-rm $(RM_OPTIONS) $(HOME)/.vimrc
