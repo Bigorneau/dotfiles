@@ -92,15 +92,6 @@ for s = 1, screen.count() do
 end
 -- }}}
 
--- {{{ Menu
--- Create a laucher widget and a main menu
-myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
-}
-
 -- {{{ Freedesktop Menu
 mymainmenu = awful.menu.new({ items = menugen.build_menu(),
                               theme = { height = 16, width = 130 }})
