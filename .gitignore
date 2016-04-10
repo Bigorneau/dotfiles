@@ -4,6 +4,7 @@ vim/vim/bundle/
 vim/vim/autoload/
 awesome/awesome/vicious
 awesome/awesome/obvious
+awesome/awesome/lain
 irsii/irsii/config
 mutt/mutt/hcache
 mutt/mutt/cache
