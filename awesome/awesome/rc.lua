@@ -57,18 +57,18 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    awful.layout.suit.floating, -- 0
+    awful.layout.suit.tile, -- 1
+    awful.layout.suit.tile.left, -- 2
+    awful.layout.suit.tile.bottom, -- 3
+    awful.layout.suit.tile.top, -- 4
+    awful.layout.suit.fair, -- 5
+    awful.layout.suit.fair.horizontal, -- 6
+    awful.layout.suit.spiral, -- 7
+    awful.layout.suit.spiral.dwindle, -- 8
+    awful.layout.suit.max, -- 9
+    awful.layout.suit.max.fullscreen, -- 10
+    awful.layout.suit.magnifier -- 11
 }
 -- }}}
 
@@ -85,7 +85,7 @@ end
 tags = {
   names  = { "✏️", "🌐", "💬", "🎬", "🎮" },
   usage = { "editor", "web", "chat", "media", "games" },
-  layouts = { layouts[9], layouts[1], layouts[1], layouts[4], layouts[1] }
+  layouts = { layouts[9], layouts[10], layouts[1], layouts[5], layouts[1] }
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -406,8 +406,10 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][2], switchtotag = true } },
+    --{ rule = { class = "Chromium-Browser" },
+    --  properties = { tag = tags[1][2], switchtotag = true } },
 }
 -- }}}
 
