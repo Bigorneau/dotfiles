@@ -10,6 +10,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local menugen = require("menugen")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -101,7 +102,7 @@ myawesomemenu = {
 }
 
 -- {{{ Freedesktop Menu
-mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
+mymainmenu = awful.menu.new({ items = menugen.build_menu(),
                               theme = { height = 16, width = 130 }})
 -- }}}
 
