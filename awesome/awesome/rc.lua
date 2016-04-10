@@ -133,6 +133,13 @@ netupinfo = lain.widgets.net({
     end
 })
 
+-- MEM
+memicon = wibox.widget.imagebox(beautiful.widget_mem)
+memwidget = lain.widgets.mem({
+    settings = function()
+        widget:set_markup(markup("#e0da37", mem_now.used .. "M "))
+    end
+})
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -215,6 +222,8 @@ for s = 1, screen.count() do
     right_layout:add(netdowninfo)
     right_layout:add(netupicon)
     right_layout:add(netupinfo)
+    right_layout:add(memicon)
+    right_layout:add(memwidget)
     right_layout:add(cpuicon)
     right_layout:add(cpuwidget)
     right_layout:add(mytextclock)
