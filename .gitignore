@@ -10,3 +10,4 @@ mutt/mutt/hcache
 mutt/mutt/cache
 mutt/mutt/*.gpg
 emulationstation/emulationstation/gamelists
+emulationstation/emulationstation/es_log.txt
