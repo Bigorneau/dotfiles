@@ -154,6 +154,10 @@ memwidget = lain.widgets.mem({
     end
 })
 
+-- Battery
+batterywidget = lain.widgets.bat()
+batteryicon = wibox.widget.imagebox(beautiful.bat)
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -237,6 +241,8 @@ for s = 1, screen.count() do
     right_layout:add(netupinfo)
     right_layout:add(volicon)
     right_layout:add(volumewidget)
+    right_layout:add(batteryicon)
+    right_layout:add(batterywidget)
     right_layout:add(memicon)
     right_layout:add(memwidget)
     right_layout:add(cpuicon)
