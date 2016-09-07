@@ -134,15 +134,9 @@ volumewidget = lain.widgets.alsa({
 })
 
 -- Net
-netdownicon = wibox.widget.imagebox(beautiful.widget_netdown)
---netdownicon.align = "middle"
-netdowninfo = wibox.widget.textbox()
-netupicon = wibox.widget.imagebox(beautiful.widget_netup)
---netupicon.align = "middle"
-netupinfo = lain.widgets.net({
+netinfo = lain.widgets.net({
     settings = function()
-        widget:set_markup(markup("#e54c62", net_now.sent .. " "))
-        netdowninfo:set_markup(markup("#87af5f", net_now.received .. " "))
+        widget:set_markup(markup("#e54c62", "⬆ " .. net_now.sent) .. markup("#87af5f", "⬇ " .. net_now.received))
     end
 })
 
@@ -158,10 +152,13 @@ memwidget = lain.widgets.mem({
 batterywidget = lain.widgets.bat({
     settings = function()
         if bat_now.status == "Charging" then
-            widget:set_markup(markup("#e54c62", bat_now.time .. " 🔌 "))
+            widget:set_markup(markup("#87af5f", "🔌 " .. bat_now.time))
         elseif bat_now.status == "Discharging" then
-            widget:set_markup(markup("#e54c62", bat_now.time .. " 🔋 "))
+            widget:set_markup(markup("#e54c62", "🔋  " .. bat_now.time))
+        elseif bat_now.status == "Full" then
+            widget:set_markup(markup("#7493d2", "🔌"))
         else
+            -- N/A
         end
     end
 })
@@ -244,10 +241,7 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(batterywidget)
-    right_layout:add(netdownicon)
-    right_layout:add(netdowninfo)
-    right_layout:add(netupicon)
-    right_layout:add(netupinfo)
+    right_layout:add(netinfo)
     right_layout:add(volicon)
     right_layout:add(volumewidget)
     right_layout:add(memicon)
