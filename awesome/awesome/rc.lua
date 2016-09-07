@@ -155,8 +155,16 @@ memwidget = lain.widgets.mem({
 })
 
 -- Battery
-batterywidget = lain.widgets.bat()
-batteryicon = wibox.widget.imagebox(beautiful.bat)
+batterywidget = lain.widgets.bat({
+    settings = function()
+        if bat_now.status == "Charging" then
+            widget:set_markup(markup("#e54c62", bat_now.time .. " 🔌 "))
+        elseif bat_now.status == "Discharging" then
+            widget:set_markup(markup("#e54c62", bat_now.time .. " 🔋 "))
+        else
+        end
+    end
+})
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -235,14 +243,13 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(batterywidget)
     right_layout:add(netdownicon)
     right_layout:add(netdowninfo)
     right_layout:add(netupicon)
     right_layout:add(netupinfo)
     right_layout:add(volicon)
     right_layout:add(volumewidget)
-    right_layout:add(batteryicon)
-    right_layout:add(batterywidget)
     right_layout:add(memicon)
     right_layout:add(memwidget)
     right_layout:add(cpuicon)
