@@ -1,1 +1,3 @@
 # local stuff
+
+#xautolock -time 10 -secure -locker "/usr/bin/xlock -mode blank" -notify 30 -notifier "notify-send --urgency=normal --expire-time=10000 'Locking in 30 secs'" &
