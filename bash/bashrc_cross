@@ -328,6 +328,7 @@ xprebuilt() {
 	fi
 
 	env -u USE="prebuilt debuginfo" xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch
+	#env -u USE="prebuilt" xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch
 	# clean
 	rm -rf /tmp/.xtarget
 }
