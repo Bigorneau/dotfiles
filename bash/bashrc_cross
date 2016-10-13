@@ -21,7 +21,7 @@ shopt -s checkwinsize
 shopt -s histappend
 
 # check if we have to do a first configuration
-if [ ! -f $HOME/.genbox-config-done ]; then
+if [ ! -f $HOME/.genbox-config-done ] && [ -x /usr/sbin/genbox-config ]; then
 	/usr/sbin/genbox-config $HOME
 	if [ $? -eq 0 ]; then
 		touch $HOME/.genbox-config-done
@@ -109,6 +109,11 @@ if [[ ${EUID} == 0 ]] ; then
 else
 	PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[00m\] ($(ps1_end2)) \[\033[01;34m\] \$\[\033[00m\] '
 fi
+
+genbox_version() {
+	local version=$(list genbox-config | cut -d "-" -f 4 | cut -d "." -f 1)
+	echo -n $version
+}
 
 export TARGETS=("" "")
 curr_target() {
@@ -240,9 +245,9 @@ _packages() {
 	return 0;
 }
 
-_targets() {
-	local cur prev prev2 opts base names
-	local targetdir=/usr/local/portage/targets/product-targets/
+_targets1() {
+	local cur prev prev2 opts base names targetbase keyword
+	local targetdir=$targetbase/targets/product-targets/
 	COMPREPLY=()
 	cur="${COMP_WORDS[COMP_CWORD]}"
 
@@ -266,7 +271,55 @@ _targets() {
 			shopt -s extglob
 			prev="${COMP_WORDS[COMP_CWORD-1]}"
 			prev2="${COMP_WORDS[COMP_CWORD-2]}"
-			grep -Po '^KEYWORDS="[a-zA-Z0-9_~\n\t/ ]+"' "$targetdir/$prev2/$prev2-$prev.ebuild" 2> /dev/null | sed ':a;N;$!ba;s/\n/ /g' | cut -d "\"" -f 2
+			grep -Po '^${keyword}="[a-zA-Z0-9_~\n\t/ ]+"' "$targetdir/$prev2/$prev2-$prev.ebuild" 2> /dev/null | sed ':a;N;$!ba;s/\n/ /g' | cut -d "\"" -f 2
+		) );;
+	*)
+		names=""
+		;;
+	esac
+	COMPREPLY=( $(compgen -W "${names}" -- ${cur}) )
+
+	return 0
+}
+
+_targets2() {
+	local cur prev prev2 opts base names archs security res
+	local targetdir=/var/lib/layman/targets/product-targets/
+	COMPREPLY=()
+	cur="${COMP_WORDS[COMP_CWORD]}"
+
+	case "${COMP_CWORD}" in
+	1)
+		names=$( (
+			shopt -s nullglob
+			shopt -s extglob
+			find $targetdir -name "$cur*.ebuild" -type f -printf "%f\n" | sed 's|\-[0-9.]*\.ebuild||g' | uniq
+		) );;
+	2)
+		names=$( (
+			shopt -s nullglob
+			shopt -s extglob
+			prev="${COMP_WORDS[COMP_CWORD-1]}"
+			find $targetdir/$prev/ -name "$prev-$cur*.ebuild" -type f -printf "%f\n" | sed 's|\.ebuild||g' | rev | cut -d "-" -f 1 | rev
+		) );;
+	3)
+		names=$( (
+			shopt -s nullglob
+			shopt -s extglob
+			prev="${COMP_WORDS[COMP_CWORD-1]}"
+			prev2="${COMP_WORDS[COMP_CWORD-2]}"
+			archs=($(grep -Po '^IUSE_WYPLAY_BOARD="[a-zA-Z0-9_~\n\t/ ]+"' "$targetdir/$prev2/$prev2-$prev.ebuild" 2> /dev/null | sed ':a;N;$!ba;s/\n/ /g' | cut -d "\"" -f 2))
+			security=($(grep -Po '^IUSE_WYPLAY_SECURITY="[a-zA-Z0-9_~\n\t/ ]+"' "$targetdir/$prev2/$prev2-$prev.ebuild" 2> /dev/null | sed ':a;N;$!ba;s/\n/ /g' | cut -d "\"" -f 2))
+			if [ ${#security[@]} -eq 0 ]; then
+				echo "$archs"
+			else
+				for s in "${security[@]}"; do
+					for a in "${archs[@]}"; do
+						res="${s}/${a} $res"
+					done
+				done
+				echo "$res"
+			fi
 		) );;
 	*)
 		names=""
@@ -327,12 +380,16 @@ xprebuilt() {
 		xtarget --sync
 	fi
 
-	env -u USE="prebuilt debuginfo" xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch
+	USE="prebuilt debuginfo" xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch
 	#env -u USE="prebuilt" xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch
 	# clean
 	rm -rf /tmp/.xtarget
 }
-complete -F _targets xprebuilt
+if [ $(genbox_version) == "1" ]; then
+	complete -F _targets1 xprebuilt
+else
+	complete -F _targets2 xprebuilt
+fi
 
 xbb() {
 	if [ "$#" -lt 2 ]; then return 1; fi
