@@ -102,7 +102,7 @@ set $USECOLOR = 1
 set $KDP64BITS = -1
 set $64BITS = 0
 
-set confirm off
+set confirm on
 set verbose off
 set history filename ~/.gdb_history
 set history save
