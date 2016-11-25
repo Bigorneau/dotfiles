@@ -11,15 +11,6 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
-# Bash won't get SIGWINCH if another process is in the foreground.
-# Enable checkwinsize so that bash will check the terminal size when
-# it regains control.  #65623
-# http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
-shopt -s checkwinsize
-
-# Enable history appending instead of overwriting.  #139609
-shopt -s histappend
-
 # check if we have to do a first configuration
 if [ ! -f $HOME/.genbox-config-done ] && [ -x /usr/sbin/genbox-config ]; then
 	/usr/sbin/genbox-config $HOME
@@ -380,7 +371,9 @@ xprebuilt() {
 		xtarget --sync
 	fi
 
+	set -x
 	USE="prebuilt debuginfo" xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch
+	set +x
 	#env -u USE="prebuilt" xtarget --create --verbose --dir $name =product-targets/$target-$version --arch $arch
 	# clean
 	rm -rf /tmp/.xtarget
@@ -397,7 +390,9 @@ xbb() {
 	if [ $(genbox_version) == "1" ]; then dir="work"; else dir="xbuild/portage"; fi
 	if [ ! -f "$ebuild" ]; then echo "no package '$package'"; return 1; fi
 	shift
+	set -x
 	xbuild $ebuild $@
+	set +x
 	if [[ $@ == *"unpack"* ]]; then
 		cd /usr/targets/$(curr_target)/$dir/$category/$package*/work/*/ || return 3
 		[ "$TMUX" != "" ] && tmux rename-window "${package}-${version}"
