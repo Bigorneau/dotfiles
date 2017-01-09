@@ -353,7 +353,7 @@ complete -F _packages xmerge
 complete -F _packages xlist
 
 xrm() {
-	for target in "$@"; do xtarget -d $target; done;
+	for target in "$@"; do xtarget --delete $target; done;
 }
 
 xprebuilt() {
