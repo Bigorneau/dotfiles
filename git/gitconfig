@@ -25,9 +25,13 @@ plain = normal
 [alias]
 tree = log --graph --decorate --pretty=oneline --abbrev-commit
 tree2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(bold yellow)%d%C(reset) %C(white)%s%C(reset) %C(dim green)- %an%C(reset)' --all
+tree3 = log --graph --abbrev-commit --decorate --format=format:'%Cred%h%Creset%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev=8 --date=relative --all
 
 [apply]
 whitespace = fix
+
+[mergetool]
+keepBackup = false
 
 [mergetool "vimdiff3"]
 cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
