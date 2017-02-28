@@ -47,6 +47,7 @@ set sort_aux = 'reverse-last-date-received'
 
 # autoview
 auto_view text/html
+auto_view text/calendar
 auto_view video/*
 auto_view image/*
 

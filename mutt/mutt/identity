@@ -1,8 +1,11 @@
-set my_name = ""
 set realname = ""
 
 set imap_user = username@gmail.com
 set folder = imaps://imap.gmail.com/
 
-source "gpg -d ~/.mutt/username.gpg |"
-source "gpg -d ~/.mutt/passwords.gpg |"
+set folder = imaps://imap.gmail.com/
+set spoolfile = +INBOX
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+
+source "gpg -d ~/.mutt/identity.gpg |"
