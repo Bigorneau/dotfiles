@@ -3,7 +3,7 @@
 ```bash
 # https://wiki.archlinux.org/index.php/Pkgfile
 
-pacman -Syy pkgfile grml-zsh-config
+pacman -Syy pkgfile zsh bash grml-zsh-config zsh-lovers
 ```
 
 # python
@@ -27,8 +27,14 @@ systemctl enable org.cups.cupsd.service
 pacman -Syy lua-luajson lua-sec
 ```
 
+## xorg
+
+```bash
+pacman -Syy xorg-xinit xorg-server-xephyr xorg-server
+```
+
 ## apps
 
 ```bash
-pacman -Syy livestreamer
+pacman -Syy livestreamer xautolock xlockmore ssmtp xclip mediainfo tree ncdu mutt  cups-pdf unzip wireless_tools vimpager lm_sensors feh flake8 rsync tmux screen vim cscope bash-completion nfs-utils alsa-tools dos2unix ttf-symbola wpa_supplicant mplayer mutt gdb imagemagick cups evince ttf-droid weechat mercurial nodejs git subversion vlc emacs firefox chromium libreoffice-fresh
 ```
