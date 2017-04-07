@@ -23,6 +23,9 @@ set message_cachedir = ~/.mutt/cache
 
 set sendmail="/usr/sbin/ssmtp"
 
+set use_envelope_from = yes
+set edit_headers = yes
+
 unset imap_passive
 set imap_keepalive = 300
 set mail_check = 120
