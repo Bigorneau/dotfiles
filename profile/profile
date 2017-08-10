@@ -7,8 +7,12 @@ export GPG_AGENT_INFO=/tmp/gpg-agent.socket
 export GCC_COLORS='error=01;31:warning=01;33:note=01;34:caret=01;32:locus=01:quote=01'
 
 # ruby
-export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
+RUBY_USER_DIR=$(ruby -e 'print Gem.user_dir' 2> /dev/null)
+if [ $? -eq 0 ];
+then
+    export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+    export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
+fi
 
 # go
 export GOPATH="$HOME/go"
