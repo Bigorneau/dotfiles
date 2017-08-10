@@ -29,3 +29,9 @@ if ([ -f /usr/bin/pacman ] && [ -f /usr/share/doc/pkgfile/command-not-found.bash
 then
 	source /usr/share/doc/pkgfile/command-not-found.bash
 fi
+
+# raspberry
+if [ -d "/opt/vc" ];
+then
+    export PATH="$PATH:/opt/vc/bin"
+fi
