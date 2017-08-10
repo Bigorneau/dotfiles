@@ -7,8 +7,3 @@
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
-
-# pacman
-if [ -r /usr/share/doc/pkgfile/command-not-found.bash ]; then
-    source /usr/share/doc/pkgfile/command-not-found.bash
-fi
