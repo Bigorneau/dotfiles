@@ -1,10 +1,19 @@
 export LANG=en_US.UTF-8
 
-export SSH_AUTH_SOCK=/tmp/ssh-agent.socket
-export GPG_AGENT_INFO=/tmp/gpg-agent.socket
-
 # GCC 4.9: https://gcc.gnu.org/onlinedocs/gcc/Language-Independent-Options.html
 export GCC_COLORS='error=01;31:warning=01;33:note=01;34:caret=01;32:locus=01:quote=01'
+
+# ssh: check if ssh agent already used
+if [ -z "$SSH_AUTH_SOCK" ];
+then
+    export SSH_AUTH_SOCK=/tmp/ssh-agent.socket
+fi
+
+# gpg: check if gpg agent already used
+if [ -z "$GPG_AGENT_INFO" ];
+then
+    export GPG_AGENT_INFO=/tmp/gpg-agent.socket
+fi
 
 # ruby
 RUBY_USER_DIR=$(ruby -e 'print Gem.user_dir' 2> /dev/null)
