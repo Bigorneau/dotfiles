@@ -2,7 +2,6 @@ xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
 
 systemctl --user start ssh-agent
-systemctl --user start gpg-agent
 
 # https://www.gnupg.org/faq/whats-new-in-2.1.html#autostart
 # systemctl --user start gpg-agent
