@@ -4,7 +4,9 @@ path = .gitconfig.local
 [core]
 editor = vim
 #pager = vimpager
-whitespace = trailing-space,space-before-tab
+#whitespace = trailing-space,space-before-tab,tab-in-indent
+whitespace = trailing-space,space-before-tab,indent-with-non-tab
+autocrlf = input
 
 [color]
 diff = true
