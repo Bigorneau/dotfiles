@@ -13,6 +13,11 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- config
 local custom = require("custom")
 
+-- widgets
+require("widgets.battery-widget.battery")
+require("widgets.brightness-widget.brightness")
+require("widgets.volume-widget.volume")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -203,6 +208,9 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            volume_widget,
+            brightness_widget,
+            battery_widget,
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
