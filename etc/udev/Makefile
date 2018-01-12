@@ -1,17 +1,17 @@
 UDEV_RULES_DIR = /etc/udev/rules.d
 
-DEVICE_NAME = 10-device-name.rules
+RULES = $(shell find rules -name *.rules)
 
 all: udev
 
 .PHONY: all clean udev
 
 udev:
-	-cp -rv $(DEVICE_NAME) $(UDEV_RULES_DIR)
+	-for rule in $(RULES); do cp -v $$rule $(UDEV_RULES_DIR); done
 
 reload-rules:
 	-udevadm control --reload-rules
 	-udevadm trigger
 
 clean:
-	-rm $(RM_OPTIONS) $(UDEV_RULES_DIR)/$(DEVICE_NAME)
+	-for rule in $(RULES); do rm $(RM_OPTIONS) $(UDEV_RULES_DIR)/$$rule; done
