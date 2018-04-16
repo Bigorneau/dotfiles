@@ -1,0 +1,4 @@
+addhl global/ number_lines
+
+# editorconfig
+hook global BufCreate .* %{editorconfig-load}
