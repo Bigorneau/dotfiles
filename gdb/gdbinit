@@ -214,6 +214,16 @@ end
 # just remap the color variables defined above
 source ~/.gdbinit.local
 
+# Load specials libs from chromium
+# need a symlink to chromium sources at ~/dev/chromium/src
+python
+import sys
+sys.path.insert(0, os.path.expanduser("~/dev/chromium/src/third_party/WebKit/Tools/gdb/"))
+import webkit
+sys.path.insert(0, os.path.expanduser("~/dev/chromium/src/tools/gdb/"))
+import gdb_chrome
+end
+
 # can't use the color functions because we are using the set command
 if $COLOREDPROMPT == 1
 	set prompt \033[31mgdb$ \033[0m
