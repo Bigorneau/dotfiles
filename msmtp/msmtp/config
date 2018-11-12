@@ -1,0 +1,17 @@
+# Set default values for all following accounts.
+defaults
+auth           on
+tls            on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile        /tmp/msmtp.log
+
+# Gmail
+account        gmail
+host           smtp.gmail.com
+port           587
+from           username@gmail.com
+user           username
+passwordeval  "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/msmtp/password.gpg"
+
+# Set a default account
+account default : gmail

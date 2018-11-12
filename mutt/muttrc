@@ -21,7 +21,7 @@ mailboxes = +INBOX
 set header_cache = ~/.mutt/hcache
 set message_cachedir = ~/.mutt/cache
 
-set sendmail="/usr/sbin/ssmtp"
+set sendmail="/usr/bin/msmtp"
 
 set use_envelope_from = yes
 set edit_headers = yes
