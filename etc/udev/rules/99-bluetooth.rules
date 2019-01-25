@@ -1,0 +1,1 @@
+SUBSYSTEM=="input", ATTRS{name}=="8BitDo SN30 Modkit", MODE="0666", ENV{ID_INPUT_JOYSTICK}="1"
