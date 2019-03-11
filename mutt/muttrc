@@ -59,7 +59,7 @@ set query_command = "goobook query '%s'"
 bind editor <Tab> complete-query
 macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
 
-source ~/.gpg.rc
+source ~/.mutt/gpg.rc
 
 source ~/.mutt/themes/archlinux.mutt
 #source ~/.mutt/themes/vombatidae.mutt
