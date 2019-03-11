@@ -44,3 +44,9 @@ if [ -d "/opt/vc" ];
 then
     export PATH="$PATH:/opt/vc/bin"
 fi
+
+# add depot_tools last !
+if [ -d "/opt/depot_tools/" ];
+then
+    export PATH="$PATH:/opt/depot_tools/"
+fi
