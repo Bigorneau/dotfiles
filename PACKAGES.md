@@ -36,5 +36,5 @@ pacman -Syy xorg-xinit xorg-server-xephyr xorg-server
 ## apps
 
 ```bash
-pacman -Syy livestreamer xautolock xlockmore msmtp xclip mediainfo tree ncdu mutt  cups-pdf unzip wireless_tools vimpager lm_sensors feh flake8 rsync tmux screen vim cscope bash-completion nfs-utils alsa-tools dos2unix ttf-symbola wpa_supplicant mplayer mutt gdb imagemagick cups evince ttf-droid weechat mercurial nodejs git subversion vlc emacs firefox chromium libreoffice-fresh
+pacman -Syy xautolock expac xclip xorg-xinit mediainfo tree ncdu hddtemp vicious cups-pdf unzip vimpager wireless_tools feh lm_sensors flake8 rsync msmtp etc/expactmux cscope bash-completion screen nfs-utils alsa-tools dos2unix alsa-utils xorg-server-xephyr xf86-video-intel intel-ucode streamlink vim xorg-server xlockmore wpa_supplicant bat ripgrep openssh mplayer noto-fonts-emoji mutt awesome imagemagick gdb evince cups ttf-droid weechat nodejs mercurial git subversion lib32-mesa vlc emacs chromium firefox libreoffice-fresh
 ```
