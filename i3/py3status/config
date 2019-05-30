@@ -1,0 +1,107 @@
+# vi: ft=sh
+
+general {
+  colors = true
+  color_good = '#ebdbb2'
+  color_degraded = '#fabd2f'
+  color_bad = '#fb4934'
+  interval = 1
+}
+
+order += 'group cpu'
+order += 'group ram'
+order += 'group wifi'
+order += 'file_status PIA'
+order += 'backlight'
+order += 'volume_status'
+order += 'battery_level'
+order += 'clock'
+
+backlight {
+  cache_timeout = -1
+  brightness_delta = 10
+  low_tune_threshold = 10
+  command = 'light'
+  format = '\?color=good 🔅{level}%'
+  on_udev_backlight = 'refresh_and_freeze'
+}
+
+battery_level {
+  cache_timeout = 20
+  #blocks = ''
+  charging_character = '⚡️'
+  color_charging = '#fabd2f'
+  format = '{icon} {percent}%'
+  notify_low_level = true
+  measurement_mode = 'sys'
+  on_udev_power_supply = 'refresh'
+}
+
+clock {
+  format = '{Europe/Paris}'
+  format_time = '{icon}   %H:%M   '
+  #blocks = '🕐 🕑 🕒 🕓 🕔 🕕 🕖 🕗 🕘 🕙 🕚 🕛 🕜 🕝 🕞 🕟 🕠 🕡 🕢 🕣 🕤 🕥 🕦 🕧'
+}
+
+file_status PIA {
+  cache_timeout = -1
+  paths = '/proc/sys/net/ipv4/conf/vpn0'
+  format = '\?color=path 🔒'
+}
+
+group cpu {
+  button_next = 1
+  button_prev = 0
+
+  sysdata {
+    cache_timeout = 1
+    thresholds = { 'cpu': [(0, 'good'), (25, 'degraded'), (80, 'bad')] }
+    format = '[\?color=cpu  {cpu_usage:.0f}%]'
+  }
+}
+
+group ram {
+  button_next = 1
+  button_prev = 0
+
+  sysdata {
+    cache_timeout = 1
+    thresholds = { 'mem': [(0, 'good'), (60, 'degraded'), (80, 'bad')] }
+    format = '[\?color=mem 󰀌   {mem_used_percent:.0f}%]'
+  }
+
+  conky {
+    format = '󰀌  {top_mem name 1} {top_mem mem 1}%'
+  }
+}
+
+volume_status {
+  device = '@DEFAULT_SINK@'
+  command = 'pamixer'
+  format = '󰀃  {percentage}%'
+  format_muted = '󰀂  0%'
+  thresholds = [(0, 'bad'), (1, 'good'), (101, 'degraded')]
+  on_udev_sound = 'refresh'
+}
+
+group wifi {
+  button_next = 1
+  button_prev = 0
+
+  wifi brief {
+    cache_timeout = -1
+    signal_bad = 0
+    bitrate_bad = 0
+    bitrate_degraded = 0
+    format = '󰀆|󰀆'
+  }
+
+  wifi detailed {
+    cache_timeout = -1
+    signal_bad = 0
+    bitrate_bad = 0
+    bitrate_degraded = 0
+    format = '{ssid}  ({signal_percent})|󰀆'
+  }
+}
+
