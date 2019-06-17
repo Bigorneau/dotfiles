@@ -6,8 +6,8 @@ editor = vim
 #pager = vimpager
 #whitespace = trailing-space,space-before-tab,tab-in-indent
 #whitespace = trailing-space,space-before-tab,indent-with-non-tab
-whitespace = trailing-space,space-before-tab
-autocrlf = input
+#whitespace = trailing-space,space-before-tab
+autocrlf = false
 
 [color]
 diff = true
@@ -31,7 +31,7 @@ tree2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%
 tree3 = log --graph --abbrev-commit --decorate --format=format:'%Cred%h%Creset%C(bold yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev=8 --date=relative --all
 
 [apply]
-whitespace = fix
+#whitespace = fix
 
 [mergetool]
 keepBackup = false
