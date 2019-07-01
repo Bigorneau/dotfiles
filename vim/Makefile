@@ -5,7 +5,9 @@ VIMDIR = vim
 AUTOLOAD_DIR = $(VIMDIR)/autoload
 BUNDLE_DIR = $(VIMDIR)/bundle
 
-VIM_PATHOGEN_URL = https://tpo.pe/pathogen.vim
+# pathogen repository
+VIM_PATHOGEN_REPOS = https://github.com/tpope/vim-pathogen.git
+VIM_PATHOGEN_URL = https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 # bundle repositories
 VIM_EDITORCONFIG_REPOS = https://github.com/editorconfig/editorconfig-vim.git
@@ -26,7 +28,8 @@ vim:
 
 autoload:
 	-mkdir --parents --verbose $(CURRENT_DIR)/$(AUTOLOAD_DIR)
-	-curl -LSso $(CURRENT_DIR)/$(AUTOLOAD_DIR)/pathogen.vim $(VIM_PATHOGEN_URL)
+	-git clone $(VIM_PATHOGEN_REPOS) $(CURRENT_DIR)/pathogen
+	-ln --symbolic $(CURRENT_DIR)/pathogen/autoload/pathogen.vim $(CURRENT_DIR)/$(AUTOLOAD_DIR)/pathogen.vim
 
 bundle: $(BUNDLE_PACKAGES)
 	-mkdir --parents --verbose $(CURRENT_DIR)/$(BUNDLE_DIR)
