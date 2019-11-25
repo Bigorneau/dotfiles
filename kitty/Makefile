@@ -1,15 +1,15 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 CURRENT_DIR = $(shell pwd)
 
-I3_DIR = i3
+KITTY_DIR = kitty
 
-all: i3
+all: kitty
 
-.PHONY: all clean i3
+.PHONY: all clean kitty
 
-i3:
+kitty:
 	-mkdir $(XDG_CONFIG_HOME)
-	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(I3_DIR) $(XDG_CONFIG_HOME)/i3
+	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(KITTY_DIR) $(XDG_CONFIG_HOME)/kitty
 
 clean:
-	-rm $(RM_OPTIONS) $(XDG_CONFIG_HOME)/i3
+	-rm $(RM_OPTIONS) $(XDG_CONFIG_HOME)/kitty
