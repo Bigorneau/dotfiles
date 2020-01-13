@@ -1,0 +1,3 @@
+[submodule "docs/android"]
+	path = docs/android
+	url = git@gist.github.com:1e654d4abd62f91796cc67e4be34735c.git
