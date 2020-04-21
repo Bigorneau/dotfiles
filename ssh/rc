@@ -1,0 +1,19 @@
+# Symlink SSH_AUTH_SOCK because multiplexers (tmux) doesn't have a way to refresh it.
+# https://werat.github.io/2017/02/04/tmux-ssh-agent-forwarding.html
+if [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "${SSH_AUTH_SOCK}" ]; then
+    ln -sf ${SSH_AUTH_SOCK} ~/.ssh/ssh_auth_sock
+fi
+
+# X11 Forwarding
+# The script must call xauth(1) because sshd will not run xauth automatically to add X11 cookies.
+# From man 8 sshd
+if read proto cookie && [ -n "${DISPLAY}" ]; then
+    if [ `echo ${DISPLAY} | cut -c1-10` = 'localhost:' ]; then
+        # X11UseLocalhost=yes
+        echo add unix:`echo ${DISPLAY} |
+        cut -c11-` ${proto} ${cookie}
+    else
+        # X11UseLocalhost=no
+        echo add ${DISPLAY} ${proto} ${cookie}
+    fi | xauth -q -
+fi
