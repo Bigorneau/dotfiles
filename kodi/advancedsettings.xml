@@ -6,10 +6,10 @@
         <!-- (?:stuff) is a non-capturing group for 'stuff', so as not to interfere with season/episode numbers. -->
 
         <!-- Anime specific matching. -->
-
+        
         <!--
         Building the regex from back to front:
-
+        
         Closing checksum (optionally followed by random text, but we don't have to match that) contained in (), {} or [].
         Preceded by any number of bracketed items of any sort of content, with possible spacing, dashes or underscores in between
         Possibly preceded by unbracketed text. Make sure it doesn't find episode numbers inside brackets.
@@ -17,38 +17,38 @@
         Preceded by various combinations of dash, dot, underscore or space, to separate the title from the episode number
         Possibly preceded by a season number, or 'Special' or 'OVA'
         -->
-
+        
         <!-- Regexes listed in order of match preference -->
         <!-- The regexes in the prepend set are anchored to checksums, so should be checked before normal Kodi defaults. -->
-
+        
         <!-- For reference, this is the regex containing everything from the episode number onwards.  It will be the same for all regexes in this section. -->
-
-        <!-- <regexp>(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?(?:[[({][\da-f]{8}[])}])</regexp> -->
-
+        
+        <regexp>(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?(?:[[({][\da-f]{8}[])}])</regexp>
+        
 
         <!-- Anything with the filename marked as Special/OVA/OAV/etc goes to season 0, regardless of what the directory may say. -->
-
+        
         <!-- EG: [SHiN-gx] Fight Ippatsu! Juuden-chan!! - Special 1 [720x480 AR h.264 FLAC][v2][FF09021F].mkv -->
         <!-- EG: [gleam] Kurenai OVA - 01 [OAD][0e73f000].mkv -->
         <!-- EG: [Jarzka] Saki Picture Drama 1 [480p 10bit DVD FLAC] [BA3CE364] -->
         <regexp>(?i)(Special|SP|OVA|OAV|Picture Drama)(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?(?:[[({][\da-f]{8}[])}])</regexp>
 
         <!-- Then check if we have an explicit season directory. -->
-
+        
         <!-- Inside a directory that specifies the season.  May include any number of subdirectories.  Doesn't try to find season markers in the file name. -->
         <!-- EG: Saki/Season 1/Saki [Jarzka]/[Jarzka] Saki 01 - Encounter [480p 10bit DVD FLAC] [9EED32CB] -->
         <!-- EG: Saki/Season 3/[Underwater-FFF] Saki Zenkoku-hen - The Nationals - 01 (720p) [AF65724D] -->
 
-        <regexp>(?i)[\\/](?:S(?:eason)?\s*(?=\d))?(Specials|\d{1,3})[\\/](?:[^\\/]+[\\/])*[^\\/]+(?:\b|_)(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?(?:[[({][\da-f]{8}[])}])</regexp>
-
+        <regexp>(?i)[\/](?:S(?:eason)?\s*(?=\d))?(Specials|\d{1,3})[\/](?:[^\/]+[\/])*[^\/]+(?:\b|_)(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?(?:[[({][\da-f]{8}[])}])</regexp>
+        
         <!-- Include season marker in the filename. -->
         <!-- EG: [CoalGuys] K-ON!! S2 - 05 [4B19B10F] -->
-
+        
         <regexp>(?i)[-._ ]+S(?:eason ?)?(\d{1,3})(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?(?:[[({][\da-f]{8}[])}])</regexp>
 
 
         <!-- Anything else gets the default blank first capture, which sets the file to season 1. -->
-
+        
         <!-- EG: [avatar-nyanko] Koikoi 7 - 01 (DVD) [5E95FA4A] -->
         <!-- EG: [gg]_Chuunibyou_Demo_Koi_ga_Shitai!_-_01_[5B6EFD1F] -->
         <!-- EG: [Eclipse] Akane-iro ni Somaru Saka - 01 (1024x576 h264) [39920E63].mkv -->
@@ -60,42 +60,52 @@
         <!-- EG: [Taka]_Naruto_Shippuuden_135_[480p][9073B8C2] -->
 
         <regexp>(?i)((?=\b|_))(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?(?:[[({][\da-f]{8}[])}])</regexp>
-
+        
         <!-- Multipart episode handling is still uncertain. (?:-(\d{1,3}))? -->
         <!-- EG: [Triad]_Dokuro-chan_-_01-02 [12345678].mkv -->
 
     </tvshowmatching>
-
+    
     <tvshowmatching action="append">
         <!-- Alternate version that does not include checksums. Put this after normal Kodi patterns. -->
         <!-- Since it doesn't use the checksum anchor, need to make sure it's not a directory name. -->
 
         <!-- For reference, this is the regex containing everything from the episode number onwards.  It will be the same for all regexes in this section. -->
-
-        <!-- <regexp>(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?[^][)(}{\\/]*$</regexp> -->
+        
+        <regexp>(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?[^][)(}{\/]*$</regexp>
 
 
         <!-- Anything with the filename marked as Special/OVA/OAV/etc goes to season 0, regardless of what the directory may say. -->
 
-        <regexp>(?i)(Special|SP|OVA|OAV|Picture Drama)(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?[^][)(}{\\/]*$</regexp>
+        <regexp>(?i)(Special|SP|OVA|OAV|Picture Drama)(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?[^][)(}{\/]*$</regexp>
 
         <!-- Inside a directory that specifies the season. -->
         <!-- EG: Saki/Season 2/[HorribleSubs] Saki Episode of Side A - 14 [720p] -->
 
-        <regexp>(?i)[\\/](?:S(?:eason)?\s*(?=\d))?(Specials|\d{1,3})[\\/](?:[^\\/]+[\\/])*[^\\/]+(?:\b|_)[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?(?:\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?[^][)(}{\\/]*?$</regexp>
+        <regexp>(?i)[\/](?:S(?:eason)?\s*(?=\d))?(Specials|\d{1,3})[\/](?:[^\/]+[\/])*[^\/]+(?:\b|_)[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?(?:\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?[^][)(}{\/]*?$</regexp>
 
         <!-- Include season marker in the filename. -->
         <!-- EG: [DeadFish] Toaru Kagaku no Railgun S - S2 - 01 [720p][AAC].mp4 -->
+       
+        <regexp>(?i)[-._ ]+S(?:eason ?)?(\d{1,3})(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?[^][)(}{\/]*$</regexp>
 
-        <regexp>(?i)[-._ ]+S(?:eason ?)?(\d{1,3})(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?[^][)(}{\\/]*$</regexp>
-
-
+        
         <!-- EG: [a.f.k.] Lucky Star - 01.avi -->
         <!-- EG: Air Master - 04 [HQA&N!].avi -->
         <!-- EG: [ANE] Yosuga no Sora - Ep01v2 [BDRip 1080p x264 FLAC] -->
         <!-- EG: [DeadFish] Jinrui wa Suitai Shimashita - Special 01 [BD][720p][AAC].mp4 -->
 
-        <regexp>(?i)((?=\b|_))(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?[^][)(}{\\/]*$</regexp>
+        <regexp>(?i)((?=\b|_))(?:[ _.-]*(?:ep?[ .]?)?(\d{1,3})(?:[_ ]?v\d+)?)+(?=\b|_)[^])}]*?(?:[[({][^])}]+[])}][ _.-]*)*?[^][)(}{\/]*$</regexp>
 
     </tvshowmatching>
+    
+    <videoscanner>
+	    <!-- Set to true to silently ignore errors while scanning videos. This prevents the error dialogue box, so you dont have to keep hitting "yes" to keep scanning.-->
+	    <ignoreerrors>true</ignoreerrors>
+    </videoscanner>
+
+    <loglevel>3</loglevel>
+    <setting id="debug.extralogging">true</setting>
+    <!--<setting id="debug.setextraloglevel">16384,131072</setting>-->
+    <setting id="debug.setextraloglevel">131072</setting>
 </advancedsettings>
