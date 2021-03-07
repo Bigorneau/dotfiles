@@ -1,0 +1,3 @@
+# remove usage of ~/.zdirs, it stall the shell if a mountpoint is no
+# longer accessible (eg: NFS mount not unmounted)
+DIRSTACKSIZE=0
