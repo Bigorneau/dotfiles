@@ -6,6 +6,10 @@ export XKB_DEFAULT_LAYOUT=fr
 # GCC 4.9: https://gcc.gnu.org/onlinedocs/gcc/Language-Independent-Options.html
 export GCC_COLORS='error=01;31:warning=01;33:note=01;34:caret=01;32:locus=01:quote=01'
 
+# From man 1 gpg-agent
+# You should always add the following lines to your .bashrc or whatever initialization file is used for all shell invocations:
+export GPG_TTY=$(tty)
+
 # ssh: check if ssh agent already used
 if [ -z "$SSH_AUTH_SOCK" ];
 then
