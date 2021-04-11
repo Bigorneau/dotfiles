@@ -22,7 +22,7 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/pictures/wallpapers/konosuba-boom.jpg fill
 #
 # Example configuration:
 #
@@ -75,7 +75,7 @@ input * xkb_layout fr
     bindsym $mod+Shift+c kill
 
     # start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+r exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -170,6 +170,9 @@ input * xkb_layout fr
 
     # move focus to the parent container
     bindsym $mod+a focus parent
+
+    bindsym $mod+Control bar hidden_state show
+    bindsym --release $mod+Control bar hidden_state hide
 #
 # Scratchpad:
 #
@@ -197,33 +200,31 @@ input * xkb_layout fr
     bindsym XF86AudioNext exec playerctl next
     bindsym XF86AudioPrev exec playerctl previous
 
+##
+## Resizing containers:
+##
+#mode "resize" {
+#    # left will shrink the containers width
+#    # right will grow the containers width
+#    # up will shrink the containers height
+#    # down will grow the containers height
+#    bindsym $left resize shrink width 10px
+#    bindsym $down resize grow height 10px
+#    bindsym $up resize shrink height 10px
+#    bindsym $right resize grow width 10px
 #
-# Resizing containers:
+#    # ditto, with arrow keys
+#    bindsym Left resize shrink width 10px
+#    bindsym Down resize grow height 10px
+#    bindsym Up resize shrink height 10px
+#    bindsym Right resize grow width 10px
 #
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    # ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-
-    bindsym $mod+Control bar hidden_state show
-    bindsym --release $mod+Control bar hidden_state hide
-}
-bindsym $mod+r mode "resize"
+#    # return to default mode
+#    bindsym Return mode "default"
+#    bindsym Escape mode "default"
+#
+#}
+#bindsym $mod+r mode "resize"
 
 default_border none
 
@@ -245,7 +246,7 @@ bar {
     #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
     #status_command i3status
     # barista.run sample-bar
-    status_command ~/go/bin/sample-bar
+    status_command exec ~/go/bin/sample-bar
 
     colors {
         statusline #ffffff
