@@ -1,4 +1,6 @@
 startup_message off
+# No Microsoft linebreaks
+crlf off
 vbell off
 defscrollback 20000
 
@@ -26,3 +28,7 @@ bind s
 bind ^s
 bind q
 bind ^q
+
+# log
+logtstamp on
+
