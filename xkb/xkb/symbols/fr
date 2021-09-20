@@ -302,7 +302,7 @@ xkb_symbols "latin9" {
 
     name[Group1]="French (legacy, alt.)";
 
-    key <TLDE>	{ [              oe,              OE, leftdoublequotemark, rightdoublequotemark ] };
+    key <TLDE>	{ [            less,         greater, leftdoublequotemark, rightdoublequotemark ] };
     key <AE01>	{ [       ampersand,               1,          dead_acute,       periodcentered ] };
     key <AE02>	{ [          eacute,               2,          asciitilde,               Eacute ] };
     key <AE03>	{ [        quotedbl,               3,          numbersign,              cedilla ] };

@@ -62,7 +62,10 @@ input type:touchpad {
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input * xkb_layout fr
+input * {
+    xkb_layout fr
+    xkb_variant "latin9"
+}
 
 ### Key bindings
 #
