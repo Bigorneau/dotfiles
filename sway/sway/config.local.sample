@@ -1,0 +1,12 @@
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg #000000 fill
+
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#   See "swaymsg -t get_outputs"
+output HDMI-A-1 resolution 1920x1080 position 0,0
+output DP-1 resolution 1920x1080 position 0,0
