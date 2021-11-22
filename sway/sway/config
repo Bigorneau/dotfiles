@@ -214,7 +214,7 @@ bar {
     # AltGr key on non-US keyboards calls modifier ISO_Level3_Shift.
     modifier Mod3
 
-    position top
+    position bottom
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -222,6 +222,7 @@ bar {
     #status_command i3status
     # barista.run sample-bar
     status_command exec ~/go/bin/sample-bar
+    font pango:Droid Sans Mono 8
 
     colors {
         statusline #ffffff
