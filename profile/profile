@@ -34,6 +34,11 @@ fi
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
 
+# rust
+export CARGO_HOME="$HOME/rust/cargo"
+export PATH="$PATH:$CARGO_HOME/bin"
+export RUSTUP_HOME="$HOME/rust/rustup"
+
 # systemd
 if [ -f /usr/bin/systemctl ];
 then
