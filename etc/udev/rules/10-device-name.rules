@@ -19,3 +19,5 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="2a70", ATTRS{idProduct}=="904d", MODE="0666
 SUBSYSTEMS=="usb", KERNEL=="ttyUSB*", ATTRS{idVendor}=="067b", ATTRS{idProduct}=="2303", GROUP="users", MODE="0666", SYMLINK+="board%n"
 # Future Technology Devices International (idVendor: 0x0403), FT232 Serial UART IC (idProduct: 0x6001)
 SUBSYSTEMS=="usb", KERNEL=="ttyUSB*", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", GROUP="users", MODE="0666", SYMLINK+="board%n"
+# Silicon Lab (idVendor: 0x10c4), 0238275F (idProduct: 0xea60)
+SUBSYSTEMS=="usb", KERNEL=="ttyUSB*", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", GROUP="users", MODE="0666", SYMLINK+="board%n"
