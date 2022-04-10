@@ -19,7 +19,7 @@ fi
 # gpg: check if gpg agent already used
 if [ -z "$GPG_AGENT_INFO" ];
 then
-    export GPG_AGENT_INFO=/tmp/gpg-agent.socket
+    export GPG_AGENT_INFO=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent
 fi
 
 # ruby
