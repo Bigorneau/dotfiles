@@ -13,7 +13,7 @@ export GPG_TTY=$(tty)
 # ssh: check if ssh agent already used
 if [ -z "$SSH_AUTH_SOCK" ];
 then
-    export SSH_AUTH_SOCK=/tmp/ssh-agent.socket
+    export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 fi
 
 # gpg: check if gpg agent already used
