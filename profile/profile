@@ -26,18 +26,21 @@ fi
 RUBY_USER_DIR=$(ruby -e 'print Gem.user_dir' 2> /dev/null)
 if [ $? -eq 0 ];
 then
-    export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-    export GEM_HOME="$(ruby -e 'print Gem.user_dir')"
+    export GEM_HOME="$RUBY_USER_DIR"
+    export PATH="$PATH:$RUBY_USER_DIR/bin"
+else
+    export GEN_HOME="${HOME}/opt/ruby"
+    export PATH="$PATH:$GEN_HOME/bin"
 fi
 
 # go
-export GOPATH="$HOME/go"
+export GOPATH="$HOME/opt/go"
 export PATH="$PATH:$GOPATH/bin"
 
 # rust
-export CARGO_HOME="$HOME/rust/cargo"
+export CARGO_HOME="$HOME/opt/rust/cargo"
 export PATH="$PATH:$CARGO_HOME/bin"
-export RUSTUP_HOME="$HOME/rust/rustup"
+export RUSTUP_HOME="$HOME/opt/rust/rustup"
 
 # systemd
 if [ -f /usr/bin/systemctl ];

@@ -230,7 +230,7 @@ bar {
     #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
     #status_command i3status
     # barista.run sample-bar
-    status_command exec ~/go/bin/sample-bar
+    status_command exec sample-bar
     font pango:Droid Sans Mono 8
 
     colors {
