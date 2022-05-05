@@ -47,4 +47,4 @@ exec swayidle -w \
 #
 # XOrg compatibility
 #
-xwayland enable
+xwayland disable
