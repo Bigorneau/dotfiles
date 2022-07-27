@@ -24,6 +24,7 @@ output DP-3 resolution 1920x1080 position 3840,0
 ## DP-1, DP-2, DP-3
 ##
 workspace 1 output DP-1
+workspace 10 output DP-1
 workspace 2 output DP-2 DP-3
 workspace 3 output DP-3 DP-2
 workspace 4 output DP-3 DP-2
@@ -47,4 +48,4 @@ exec swayidle -w \
 #
 # XOrg compatibility
 #
-xwayland disable
+xwayland enable
