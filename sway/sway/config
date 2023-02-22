@@ -240,5 +240,8 @@ bar {
     }
 }
 
+assign [app_id="firefox"] 🪐
+assign [app_id="mpv"] 🎥
+
 include config.local
 include /etc/sway/config.d/*
