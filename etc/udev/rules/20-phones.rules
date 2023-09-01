@@ -1,0 +1,13 @@
+# Phones
+#
+# One plus one 3t
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2a70", ATTRS{idProduct}=="904d", MODE="0666", GROUP="users", SYMLINK+="oneplusone3t"
+
+
+# Apple (05ac)
+# iPhones
+
+# 05ac:1227 Apple, Inc. Mobile Device (DFU Mode)
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="05ac", ATTRS{idProduct}=="1227", MODE="0666", GROUP="users", SYMLINK+="iphone-dfu%n"
+# 05ac:12a8 Apple, Inc. iPhone 5/5C/5S/6/SE/7/8/X
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="12a8", ATTRS{idProduct}=="1227", MODE="0666", GROUP="users", SYMLINK+="iphone%n"
