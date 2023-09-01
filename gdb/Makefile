@@ -1,15 +1,14 @@
+XDG_CONFIG_HOME ?= $(HOME)/.config
 CURRENT_DIR = $(shell pwd)
 
-GDBINIT = gdbinit
-GDBINIT_LOCAL = gdbinit.local
+GDBDIR = gdb
 
 all: gdb
 
 .PHONY: all clean gdb
 
 gdb:
-	-ln --symbolic $(CURRENT_DIR)/$(GDBINIT) $(HOME)/.gdbinit
-	-cp --no-clobber $(CURRENT_DIR)/$(GDBINIT_LOCAL) $(HOME)/.gdbinit.local
+	-ln --symbolic $(CURRENT_DIR)/$(GDBDIR) $(XDG_CONFIG_HOME)
 
 clean:
-	-rm $(RM_OPTIONS) $(HOME)/.gdbinit
+	-ln --symbolic $(XDG_CONFIG_HOME)/gdb

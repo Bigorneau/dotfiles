@@ -16,3 +16,4 @@ emulationstation/emulationstation/gamelists
 emulationstation/emulationstation/es_log.txt
 sway/sway/config.local
 sway/sway/img
+gdb/gdb/gdb_history

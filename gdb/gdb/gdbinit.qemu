@@ -1,0 +1,10 @@
+set confirm on
+set verbose off
+set pagination off
+
+# These make gdb never pause in its output
+set height 0
+set width 0
+
+tui new-layout qemu regs 1 cmd 1
+layout qemu
