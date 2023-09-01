@@ -240,8 +240,17 @@ bar {
     }
 }
 
-assign [app_id="firefox"] 🪐
+
+#
+# Specific Apps
+#
+for_window [class="ghidra-Ghidra"] floating enable
+assign [class="ghidra-Ghidra"] ghidra
+assign [class="Chromium"] chrome
+assign [class="firefox"] 🪐
 assign [app_id="mpv"] 🎥
+# instance: "qemu", class: "Qemu-system-x86_64"
+assign [class="Qemu-system-x86_64"] 🐢
 
 include config.local
 include /etc/sway/config.d/*
