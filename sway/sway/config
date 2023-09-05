@@ -246,7 +246,8 @@ bar {
 #
 for_window [class="ghidra-Ghidra"] floating enable
 assign [class="ghidra-Ghidra"] ghidra
-assign [class="Chromium"] chrome
+assign [app_id="chromium"] chrome
+assign [app_id="chrome-stable"] chrome
 assign [class="firefox"] 🪐
 assign [app_id="mpv"] 🎥
 # instance: "qemu", class: "Qemu-system-x86_64"
