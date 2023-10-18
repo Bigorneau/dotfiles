@@ -1,0 +1,16 @@
+[Unit]
+Description=sway - User service
+Documentation=man:sway(5)
+BindsTo=graphical-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target
+
+
+[Service]
+Type=simple
+NotifyAccess=all
+#EnvironmentFile=-%h/.config/sway/env
+ExecStart=/usr/bin/sway
+Restart=never
+RestartSec=1
+TimeoutStopSec=10
