@@ -250,6 +250,7 @@ assign [app_id="chromium"] chrome
 assign [app_id="chrome-stable"] chrome
 assign [class="firefox"] 🪐
 assign [app_id="firefox"] 🪐
+assign [app_id="firefoxdeveloperedition"] 💿
 assign [app_id="mpv"] 🎥
 # instance: "qemu", class: "Qemu-system-x86_64"
 assign [class="Qemu-system-x86_64"] 🐢
