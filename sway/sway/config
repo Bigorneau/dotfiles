@@ -254,6 +254,7 @@ assign [app_id="firefox"] 🪐
 assign [app_id="firefoxdeveloperedition"] 💿
 assign [app_id="mpv"] 🎥
 # instance: "qemu", class: "Qemu-system-x86_64"
+assign [class="jetbrains-studio"] 🤖
 assign [class="Qemu-system-x86_64"] 🐢
 
 include config.local
