@@ -1,6 +1,7 @@
 ignore-empty-password
 show-failed-attempts
 show-keyboard-layout
+disable-caps-lock-text
 indicator-caps-lock
 
 color=000000
