@@ -39,6 +39,7 @@ export PATH="$PATH:$GOPATH/bin"
 
 # rust
 export CARGO_HOME="$HOME/opt/rust/cargo"
+export CARGO_BUILD_TARGET_DIR="$HOME/tmp/rust"
 export PATH="$PATH:$CARGO_HOME/bin"
 export RUSTUP_HOME="$HOME/opt/rust/rustup"
 
