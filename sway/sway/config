@@ -126,6 +126,12 @@ input * {
     bindsym $mod+Shift+0 move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+    # https://www.reddit.com/r/swaywm/comments/qo4jln/how_can_i_move_the_entire_workspace_to_the_other/
+    bindsym $mod+greater move workspace to output right
+    bindsym $mod+less move workspace to output left
+
+
 #
 # Layout stuff:
 #
@@ -245,7 +251,7 @@ bar {
 # Specific Apps
 #
 for_window [class="ghidra-Ghidra"] floating enable
-assign [class="ghidra-Ghidra"] ghidra
+#assign [class="ghidra-Ghidra"] ghidra
 assign [app_id="chromium"] chrome
 assign [app_id="chrome-stable"] chrome
 assign [app_id="google-chrome"] chrome
@@ -253,6 +259,8 @@ assign [class="firefox"] 🪐
 assign [app_id="firefox"] 🪐
 assign [app_id="firefoxdeveloperedition"] 💿
 assign [app_id="mpv"] 🎥
+assign [app_id="qemu"] qemu-window
+
 # instance: "qemu", class: "Qemu-system-x86_64"
 assign [class="jetbrains-studio"] 🤖
 assign [class="Qemu-system-x86_64"] 🐢
