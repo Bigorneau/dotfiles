@@ -255,7 +255,6 @@ for_window [class="ghidra-Ghidra"] floating enable
 assign [app_id="chromium"] chrome
 assign [app_id="chrome-stable"] chrome
 assign [app_id="google-chrome"] chrome
-assign [class="firefox"] 🪐
 assign [app_id="firefox"] 🪐
 assign [app_id="firefoxdeveloperedition"] 💿
 assign [app_id="mpv"] 🎥
@@ -264,6 +263,8 @@ assign [app_id="qemu"] qemu-window
 # instance: "qemu", class: "Qemu-system-x86_64"
 assign [class="jetbrains-studio"] 🤖
 assign [class="Qemu-system-x86_64"] 🐢
+
+for_window [shell="xwayland"] title_format "(xwayland) %title"
 
 include config.local
 include /etc/sway/config.d/*
