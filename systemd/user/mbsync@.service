@@ -1,0 +1,13 @@
+[Unit]
+Description=Refresh emails via mbsync
+AssertPathExists=%h/mails/%i/config/mbsyncrc
+Wants=mbsync@%i.timer
+
+[Service]
+Type=oneshot
+Environment=MBSYNC_DIR=%h/mails/%i/config/mbsyncrc
+ExecStart=/usr/bin/mbsync -a -c $MBSYNC_DIR
+TimeoutSec=120
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=mbsync for %i
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
