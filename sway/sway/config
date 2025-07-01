@@ -223,27 +223,7 @@ default_border none
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    mode dock
-    hidden_state hide
-    # Mod5 is ISO_Level3_Shift (see 'xmodmap -pm')
-    # AltGr key on non-US keyboards calls modifier ISO_Level3_Shift.
-    modifier Mod3
-
-    position bottom
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-    #status_command i3status
-    # barista.run sample-bar
-    status_command exec sample-bar
-    font pango:Droid Sans Mono 8
-
-    colors {
-        statusline #ffffff
-        background #000000
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    swaybar_command waybar
 }
 
 
