@@ -1,59 +1,31 @@
 // -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
+    "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    // "height": 10, // Waybar height (to be removed for auto height)
+    "height": 10, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
+    "mode": "dock",
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        "sway/scratchpad",
-        "custom/media"
+        "sway/scratchpad"
     ],
     "modules-center": [
         "sway/window"
     ],
     "modules-right": [
         "mpd",
+        "mpris",
+        "tray",
         "idle_inhibitor",
         "pulseaudio",
-        "power-profiles-daemon",
-        "cpu",
-        "memory",
-        "temperature",
+        "group/hardware",
         "backlight",
         "battery",
-        "clock",
-        "tray"
+        "clock"
     ],
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -106,7 +78,7 @@
         // }
     },
     "clock": {
-        // "timezone": "America/New_York",
+        //"timezone": "Europe/Paris",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -116,6 +88,19 @@
     },
     "memory": {
         "format": "{}% "
+    },
+    "group/hardware": {
+            "orientation": "inherit",
+            "drawer": {
+                    "transition-duration": 500,
+                    "children-class": "not-power",
+                    "transition-left-to-right": false
+            },
+            "modules": [
+                    "cpu",
+                    "temperature",
+                    "memory"
+            ]
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -145,20 +130,6 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
@@ -176,18 +147,18 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "playerctl play-pause"
     },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    "mpris": {
+            "format": "{player_icon} {position} / {length}",
+            "format-paused": "{status_icon} <i>{position} / {length}</i>",
+            "player-icons": {
+                    "default": "▶",
+                    "mpv": "🎵"
+            },
+            "status-icons": {
+                    "paused": "⏸"
+            }
+            // "ignored-players": ["firefox"]
     }
 }

@@ -2,9 +2,6 @@
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Droid Sans Mono;
     font-size: 14px;
-    font-weight: 700;
-    border-radius: 0;
-    min-height: 0;
     background-color: #000000;
 }
 
@@ -122,7 +119,12 @@ button:hover {
 
 #battery.charging, #battery.plugged {
     color: #ffffff;
-    background-color: #26A65B;
+    background-color: #40534C;
+}
+
+#battery.full {
+    color: #ffffff;
+    background-color: #413D65;
 }
 
 @keyframes blink {
@@ -134,7 +136,7 @@ button:hover {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
+    background-color: #A0153E;
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
