@@ -231,12 +231,14 @@ bar {
 # Specific Apps
 #
 for_window [class="ghidra-Ghidra"] floating enable
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
+for_window [app_id="firefox-developer-edition" title="Picture-in-Picture"] floating enable
 #assign [class="ghidra-Ghidra"] ghidra
 assign [app_id="chromium"] chrome
 assign [app_id="chrome-stable"] chrome
 assign [app_id="google-chrome"] chrome
 assign [app_id="firefox"] 🪐
-assign [app_id="firefoxdeveloperedition"] 💿
+assign [app_id="firefox-developer-edition"] 💿
 assign [app_id="mpv"] 🎥
 assign [app_id="qemu"] qemu-window
 
