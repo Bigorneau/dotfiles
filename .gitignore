@@ -17,3 +17,7 @@ emulationstation/emulationstation/es_log.txt
 sway/sway/config.local
 sway/sway/img
 gdb/gdb/gdb_history
+
+systemd/pkg
+systemd/src
+systemd/*.tar.zst

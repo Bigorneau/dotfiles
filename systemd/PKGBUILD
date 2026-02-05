@@ -1,0 +1,35 @@
+pkgname=custom-adhoc-systemd-files
+pkgver=20260203.0406134
+pkgrel=1
+pkgdesc="Ad-hoc systemd files"
+arch=('any')
+#url="https://github.com/"
+#license=('GPL')
+#groups=()
+#depends=()
+#makedepends=('git')
+#provides=("${pkgname%-git}")
+#conflicts=("${pkgname%-git}")
+#replaces=()
+#backup=("")
+#options=()
+source=("slices/custom-restricted.slice")
+noextract=()
+sha256sums=('SKIP')
+
+pkgver() {
+    #cd "${srcdir}/${pkgname%-git}"
+    # Git, no tags available
+    printf "%s.%s" "$(git show --no-patch --format=%ad --date=format:'%Y%m%d' HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+#prepare() {
+#}
+
+#build() {
+#}
+
+package() {
+    install -dm 755 "${pkgdir}/etc/systemd/system"
+    cp -dR --no-preserve=ownership custom-*.slice "${pkgdir}/etc/systemd/system"
+}
