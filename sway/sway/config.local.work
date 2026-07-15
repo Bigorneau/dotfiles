@@ -50,3 +50,5 @@ exec swayidle -w \
 # XOrg compatibility
 #
 xwayland enable
+
+exec go-notifier
