@@ -1,0 +1,13 @@
+[Unit]
+Description=Low-priority background workloads
+
+[Slice]
+#  mark the cgroup for "idle scheduling", which means that it will get CPU resources only when there
+#  are no processes not marked in this way to execute in this cgroup or its siblings.
+#  ... it is equivalent to the minimum weight.
+CPUWeight=idle
+IOWeight=1
+
+MemoryHigh=70%
+MemoryMax=50%
+MemorySwapMax=infinity

@@ -1,7 +1,7 @@
-pkgname=custom-adhoc-systemd-files
-pkgver=20260203.0406134
+pkgname=custom-adhoc-systemd-slices
+pkgver=20261012.2f57eea
 pkgrel=1
-pkgdesc="Ad-hoc systemd files"
+pkgdesc="Ad-hoc systemd slices files"
 arch=('any')
 #url="https://github.com/"
 #license=('GPL')
@@ -13,9 +13,19 @@ arch=('any')
 #replaces=()
 #backup=("")
 #options=()
-source=("slices/custom-restricted.slice")
+source=(
+    "custom-restricted-4c1t-80-percent.slice"
+    "custom-restricted-6c2t-80-percent.slice"
+    "custom-restricted-8c2t-80-percent.slice"
+    "custom-background-priority.slice"
+)
 noextract=()
-sha256sums=('SKIP')
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
     #cd "${srcdir}/${pkgname%-git}"

@@ -1,0 +1,14 @@
+[Slice]
+# 80% of 16 logical CPUs = 1280%
+# CPU * percent: 16 (nproc) * 80
+CPUQuota=1280%
+# Relative CPU scheduling weight, default 100
+CPUWeight=80
+
+MemoryMax=80%
+MemorySwapMax=infinity
+# Optional soft limit - reclaim starts above it, before the hard cap bites:
+MemoryHigh=70%
+
+# between 1 and 10000, default is 100
+IOWeight=80
