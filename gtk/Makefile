@@ -3,6 +3,7 @@ CURRENT_DIR = $(shell pwd)
 
 GTK_20 = gtk-2.0
 GTK_30 = gtk-3.0
+GTK_40 = gtk-4.0
 
 all: gtk
 
@@ -11,7 +12,9 @@ all: gtk
 gtk:
 	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(GTK_20) $(XDG_CONFIG_HOME)/gtk-2.0
 	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(GTK_30) $(XDG_CONFIG_HOME)/gtk-3.0
+	-ln --symbolic --no-dereference $(CURRENT_DIR)/$(GTK_40) $(XDG_CONFIG_HOME)/gtk-4.0
 
 clean:
 	-rm $(RM_OPTIONS) $(XDG_CONFIG_HOME)/gtk-2.0
 	-rm $(RM_OPTIONS) $(XDG_CONFIG_HOME)/gtk-3.0
+	-rm $(RM_OPTIONS) $(XDG_CONFIG_HOME)/gtk-4.0
